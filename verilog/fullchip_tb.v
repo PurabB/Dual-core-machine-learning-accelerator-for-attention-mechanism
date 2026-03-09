@@ -8,7 +8,7 @@ module fullchip_tb;
 parameter total_cycle = 8;   // how many streamed Q vectors will be processed
 parameter bw = 8;            // Q & K vector bit precision
 parameter bw_psum = 2*bw+4;  // partial sum bit precision
-parameter pr = 16;           // how many products added in each dot product 
+parameter pr = 8;           // how many products added in each dot product 
 parameter col = 8;           // how many dot product units are equipped
 
 integer qk_file ; // file handler
@@ -67,6 +67,7 @@ assign inst[0] = pmem_wr;
 reg [bw_psum-1:0] temp5b;
 reg [bw_psum+3:0] temp_sum;
 reg [bw_psum*col-1:0] temp16b;
+wire [bw_psum*col-1:0] out;
 
 
 
@@ -74,7 +75,8 @@ fullchip #(.bw(bw), .bw_psum(bw_psum), .col(col), .pr(pr)) fullchip_instance (
       .reset(reset),
       .clk(clk), 
       .mem_in(mem_in), 
-      .inst(inst)
+      .inst(inst),
+      .out(out)
 );
 
 
@@ -205,14 +207,6 @@ $display("##### Qmem writing  #####");
     mem_in[6*bw-1:5*bw] = Q[q][5];
     mem_in[7*bw-1:6*bw] = Q[q][6];
     mem_in[8*bw-1:7*bw] = Q[q][7];
-    mem_in[9*bw-1:8*bw] = Q[q][8];
-    mem_in[10*bw-1:9*bw] = Q[q][9];
-    mem_in[11*bw-1:10*bw] = Q[q][10];
-    mem_in[12*bw-1:11*bw] = Q[q][11];
-    mem_in[13*bw-1:12*bw] = Q[q][12];
-    mem_in[14*bw-1:13*bw] = Q[q][13];
-    mem_in[15*bw-1:14*bw] = Q[q][14];
-    mem_in[16*bw-1:15*bw] = Q[q][15];
 
     #0.5 clk = 1'b1;  
 
@@ -246,14 +240,6 @@ $display("##### Kmem writing #####");
     mem_in[6*bw-1:5*bw] = K[q][5];
     mem_in[7*bw-1:6*bw] = K[q][6];
     mem_in[8*bw-1:7*bw] = K[q][7];
-    mem_in[9*bw-1:8*bw] = K[q][8];
-    mem_in[10*bw-1:9*bw] = K[q][9];
-    mem_in[11*bw-1:10*bw] = K[q][10];
-    mem_in[12*bw-1:11*bw] = K[q][11];
-    mem_in[13*bw-1:12*bw] = K[q][12];
-    mem_in[14*bw-1:13*bw] = K[q][13];
-    mem_in[15*bw-1:14*bw] = K[q][14];
-    mem_in[16*bw-1:15*bw] = K[q][15];
 
     #0.5 clk = 1'b1;  
 
@@ -359,11 +345,32 @@ $display("##### move ofifo to pmem #####");
   #0.5 clk = 1'b1;  
 
 ///////////////////////////////////////////
+$display("##### Read PMEM and Verify #####");
+  for (q=0; q<total_cycle; q=q+1) begin
+    #0.5 clk = 1'b0;  
+    pmem_rd = 1; 
+    pmem_add = q;
+    #0.5 clk = 1'b1;  
+    
+    #0.5 clk = 1'b0;
+    // Check results
+    for (i=0; i<col; i=i+1) begin
+      temp5b = out[bw_psum*(i+1)-1 : bw_psum*i];
+      if (temp5b !== result[q][i][bw_psum-1:0]) begin
+        $display("ERROR at cycle %d, col %d: Expected %h, Got %h", q, i, result[q][i][bw_psum-1:0], temp5b);
+      end else begin
+        $display("SUCCESS at cycle %d, col %d: Got %h", q, i, temp5b);
+      end
+    end
+    #0.5 clk = 1'b1;
+  end
 
+  #0.5 clk = 1'b0;
+  pmem_rd = 0;
+  #0.5 clk = 1'b1;
 
-
-
-  #10 $finish;
+  #10 $display("Simulation Finished");
+  $finish;
 
 
 end

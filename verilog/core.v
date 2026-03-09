@@ -5,7 +5,7 @@ module core (clk, sum_out, mem_in, out, inst, reset);
 parameter col = 8;
 parameter bw = 8;
 parameter bw_psum = 2*bw+4;
-parameter pr = 16;
+parameter pr = 8;
 
 output [bw_psum+3:0] sum_out;
 output [bw_psum*col-1:0] out;
@@ -47,6 +47,7 @@ assign pmem_wr = inst[0];
 
 assign mac_in  = inst[6] ? kmem_out : qmem_out;
 assign pmem_in = fifo_out;
+assign out = pmem_out;
 
 mac_array #(.bw(bw), .bw_psum(bw_psum), .col(col), .pr(pr)) mac_array_instance (
         .in(mac_in), 
