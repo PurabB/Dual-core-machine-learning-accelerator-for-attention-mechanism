@@ -46,7 +46,7 @@ always @ (posedge clk) begin
     inst_2q <= inst_q;
     if (inst_q[0]) begin
        query_q <= q_in;
-       if (cnt_q == 9-col_id)begin
+       if (cnt_q == col_id - 1)begin
          cnt_q <= 0;
          key_q <= q_in;
          load_ready_q <= 0;
