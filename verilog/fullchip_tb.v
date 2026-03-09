@@ -355,7 +355,7 @@ $display("##### Read PMEM and Verify #####");
     #0.5 clk = 1'b0;
     // Check results
     for (i=0; i<col; i=i+1) begin
-      temp5b = out[bw_psum*(i+1)-1 : bw_psum*i];
+      temp5b = out[bw_psum*i +: bw_psum];
       if (temp5b !== result[q][i][bw_psum-1:0]) begin
         $display("ERROR at cycle %d, col %d: Expected %h, Got %h", q, i, result[q][i][bw_psum-1:0], temp5b);
       end else begin
