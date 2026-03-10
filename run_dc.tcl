@@ -1,5 +1,5 @@
-set top_module aes_cipher_top
-set rtlPath "/home/linux/ieng6/ECE260B_WI26_A00/public/DESIGNdata/aes_cipher_top/rtl"
+set top_module fullchip
+set rtlPath "./verilog"
 
 # Target library
 set target_library /home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/db/tcbn65gpluswc.db 
@@ -42,11 +42,15 @@ define_design_lib WORK -path .template
 set verilogout_single_bit false
 
 # read RTL
-analyze -format verilog -lib WORK aes_cipher_top.v
-analyze -format verilog -lib WORK aes_key_expand_128.v
-analyze -format verilog -lib WORK aes_rcon.v
-analyze -format verilog -lib WORK aes_sbox.v
-analyze -format verilog -lib WORK timescale.v
+analyze -format verilog -lib WORK mac_8in.v
+analyze -format verilog -lib WORK mac_col.v
+analyze -format verilog -lib WORK mac_array.v
+analyze -format verilog -lib WORK ofifo.v
+analyze -format verilog -lib WORK fifo_depth16.v
+analyze -format verilog -lib WORK fifo_mux_16_1.v
+analyze -format verilog -lib WORK sram_w16.v
+analyze -format verilog -lib WORK core.v
+analyze -format verilog -lib WORK fullchip.v
 
 elaborate $top_module -lib WORK -update
 current_design $top_module
@@ -54,8 +58,12 @@ current_design $top_module
 # Link Design
 link
 
-# Default SDC Constraints
-read_sdc ${top_module}.sdc
+# Embedded SDC Constraints for 1GHz
+set clk_period 1.0
+create_clock -name clk -period $clk_period [get_ports clk]
+set_input_delay [expr 0.2 * $clk_period] [all_inputs] -clock clk
+set_output_delay [expr 0.2 * $clk_period] [all_outputs] -clock clk
+set_false_path -from [get_ports reset]
 propagate_constraints
 
 current_design $top_module
