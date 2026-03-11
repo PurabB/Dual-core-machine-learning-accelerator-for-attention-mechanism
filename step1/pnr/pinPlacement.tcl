@@ -1,5 +1,5 @@
 # Reset existing pin assignments
-unplacePin *
+unplacePins -all
 
 setPinAssignMode -pinEditInBatch true
 
