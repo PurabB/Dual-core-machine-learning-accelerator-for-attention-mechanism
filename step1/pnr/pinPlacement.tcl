@@ -1,6 +1,3 @@
-# Reset existing pin assignments
-unplacePins -all
-
 setPinAssignMode -pinEditInBatch true
 
 # --- WEST (Left) Pins: clk, reset, inst[16:0], mem_in[63:0] ---
