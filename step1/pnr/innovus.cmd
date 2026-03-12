@@ -586,3 +586,6 @@ gui_select -next -point {1369.147 -163.295}
 gui_select -next -point {1369.147 -163.295}
 gui_select -next -point {1369.147 -163.295}
 gui_select -next -point {1369.147 -163.295}
+pan -64.496 38.874
+pan -108.520 46.793
+pan 123.032 241.377

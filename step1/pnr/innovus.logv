@@ -35810,3 +35810,6 @@ Total number of glitch violations: 0
 [03/11 14:35:36  15674] <CMD> gui_select -next -point {1369.147 -163.295}
 [03/11 14:35:36  15674] <CMD> gui_select -next -point {1369.147 -163.295}
 [03/11 17:59:36  18657] child process exited abnormally
+[03/11 18:19:58  18912] <CMD> pan -64.496 38.874
+[03/11 18:20:01  18914] <CMD> pan -108.520 46.793
+[03/11 18:20:14  18919] <CMD> pan 123.032 241.377

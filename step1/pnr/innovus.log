@@ -18559,3 +18559,6 @@ End delay calculation. (MEM=1803.8 CPU=0:00:00.8 REAL=0:00:01.0)
 <CMD> gui_select -next -point {1369.147 -163.295}
 <CMD> gui_select -next -point {1369.147 -163.295}
 child process exited abnormally
+<CMD> pan -64.496 38.874
+<CMD> pan -108.520 46.793
+<CMD> pan 123.032 241.377
