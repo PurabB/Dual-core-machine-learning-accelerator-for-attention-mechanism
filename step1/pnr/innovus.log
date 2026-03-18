@@ -18562,3 +18562,8 @@ child process exited abnormally
 <CMD> pan -64.496 38.874
 <CMD> pan -108.520 46.793
 <CMD> pan 123.032 241.377
+
+*** Memory Usage v#1 (Current mem = 1885.008M, initial mem = 149.258M) ***
+*** Message Summary: 2146 warning(s), 43 error(s)
+
+--- Ending "Innovus" (totcpu=7:55:58, real=25:09:53, mem=1885.0M) ---
