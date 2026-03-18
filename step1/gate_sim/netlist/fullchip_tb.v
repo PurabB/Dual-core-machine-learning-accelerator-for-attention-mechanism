@@ -71,7 +71,7 @@ wire [bw_psum*col-1:0] out;
 
 
 
-fullchip #(.bw(bw), .bw_psum(bw_psum), .col(col), .pr(pr)) fullchip_instance (
+fullchip fullchip_instance (
       .reset(reset),
       .clk(clk), 
       .mem_in(mem_in), 
