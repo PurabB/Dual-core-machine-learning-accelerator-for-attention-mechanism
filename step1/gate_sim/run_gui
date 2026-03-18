@@ -5,6 +5,9 @@ xrun \
 +xmstatus \
 +xmtimescale+1ns/1ps \
 +xmoveride_timescale \
+-v ../syn/verilog/fifo_mux_2_1.v \
+-v ../syn/verilog/fifo_mux_8_1.v \
+-v ../syn/verilog/fifo_mux_16_1.v \
 -v ./netlist/fullchip.pnr.v \
 -v ./netlist/tcbn65gplus.v \
 ./netlist/fullchip_tb.v
