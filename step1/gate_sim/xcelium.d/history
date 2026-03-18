@@ -1,0 +1,5 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(18Mar2026:02:22:30):( xrun +gui +access+rwc +xm64bit +xmstatus +xmtimescale+1ns/1ps +xmoveride_timescale -v ./netlist/fullchip.pnr.v -v ./netlist/tcbn65gplus.v ./netlist/fullchip_tb.v )

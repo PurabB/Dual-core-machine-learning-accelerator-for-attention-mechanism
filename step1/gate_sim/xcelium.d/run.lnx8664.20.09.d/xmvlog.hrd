@@ -1,0 +1,8 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-VFILE
+./netlist/fullchip.pnr.v
+-VFILE
+./netlist/tcbn65gplus.v
