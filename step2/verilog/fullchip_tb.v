@@ -28,6 +28,9 @@ integer  result[total_cycle-1:0][col-1:0];
 integer  sum[total_cycle-1:0];
 
 integer i,j,k,t,p,q,s,u, m;
+integer  current_abs;
+integer  sum_abs;
+integer  expected_norm[total_cycle-1:0][col-1:0];
 
 
 
@@ -173,9 +176,6 @@ $display("##### Estimated multiplication result #####");
      end
   end
 
-  integer current_abs;
-  integer sum_abs;
-  integer expected_norm[total_cycle-1:0][col-1:0];
 
   for (t=0; t<total_cycle; t=t+1) begin
      sum_abs = 0;
