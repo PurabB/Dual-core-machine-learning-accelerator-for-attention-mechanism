@@ -372,18 +372,20 @@ $display("##### Normalization Phase #####");
     #0.5 clk = 1'b0;  
     pmem_rd = 1; 
     pmem_add = q;
-    norm_start = 1;
     #0.5 clk = 1'b1;  
 
     #0.5 clk = 1'b0;  
-    norm_start = 0;
     pmem_rd = 0;
+    norm_start = 1;
     #0.5 clk = 1'b1;  
     
-    // Wait for normalization to complete (it takes 3 cycles)
+    #0.5 clk = 1'b0;
+    norm_start = 0;
+    #0.5 clk = 1'b1;
+
+    // Wait for normalization to complete (it takes 3 cycles, we just did 1)
     #0.5 clk = 1'b0; #0.5 clk = 1'b1;
-    #0.5 clk = 1'b0; #0.5 clk = 1'b1;
-    #0.5 clk = 1'b0; #0.5 clk = 1'b1; // Division finishes here
+    #0.5 clk = 1'b0; #0.5 clk = 1'b1; 
     
     // Write normalized result back to pmem at the same address
     #0.5 clk = 1'b0;
