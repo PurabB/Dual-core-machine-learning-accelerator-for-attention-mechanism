@@ -22,7 +22,9 @@ analyze -format sverilog [list \
     $rtl_path/mac_col.sv        \
     $rtl_path/mac_array.sv      \
     $rtl_path/sram_w16.sv       \
+    $rtl_path/divider_mcp.sv    \
     $rtl_path/sfp_row.sv        \
+    $rtl_path/sparsity_ctrl.sv  \
     $rtl_path/core.sv           \
 ]
 

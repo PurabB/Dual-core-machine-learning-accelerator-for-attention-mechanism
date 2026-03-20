@@ -1,38 +1,42 @@
-// Created by prof. Mingu Kang @VVIP Lab in UCSD ECE department
-// Please do not spread this code without permission
 module mac_array #(
-    parameter col     = 8,
-    parameter bw      = 8,
-    parameter bw_psum = 2*bw+6,
-    parameter pr      = 8
+    parameter int COL     = 8,
+    parameter int BW      = 8,
+    parameter int BW_PSUM = 2 * BW + 6,
+    parameter int PR      = 8
 ) (
-    input  logic                    clk,
-    input  logic                    reset,
-    input  logic [1:0]              inst,
-    input  logic [pr*bw-1:0]        in,
-    output logic [bw_psum*col-1:0]  out,
-    output logic [col-1:0]          fifo_wr
+    input  logic                   clk,
+    input  logic                   reset,
+    input  logic [            1:0] inst,
+    input  logic [      PR*BW-1:0] in,
+    output logic [BW_PSUM*COL-1:0] out,
+    output logic [        COL-1:0] fifo_wr
 );
 
-wire [2*(col+1)-1:0]          inst_temp;
-wire [2*(col+1)*bw*pr-1:0]    q_temp;
+  // Chain signals using arrays to avoid multi-driver issues
+  logic [      1:0] inst_chain[COL+1];
+  logic [BW*PR-1:0] q_chain   [COL+1];
 
-genvar i;
+  always_comb begin
+    inst_chain[0] = inst;
+    q_chain[0]    = in;
+  end
 
-assign inst_temp[1:0]    = inst;
-assign q_temp[bw*pr-1:0] = in;
-
-for (i=1; i < col+1 ; i=i+1) begin : col_idx
-   mac_col #(.bw(bw), .bw_psum(bw_psum), .pr(pr), .col_id(i)) mac_col_inst (
-        .q_in( q_temp[pr*bw*i-1    :pr*bw*(i-1)]),
-        .q_out(q_temp[pr*bw*(i+1)-1:pr*bw*i]),
+  for (genvar i = 0; i < COL; i++) begin : col_idx
+    mac_col #(
+        .BW(BW),
+        .BW_PSUM(BW_PSUM),
+        .PR(PR),
+        .COL_ID(i + 1)
+    ) mac_col_inst (
+        .q_in(q_chain[i]),
+        .q_out(q_chain[i+1]),
         .clk(clk),
         .reset(reset),
-        .fifo_wr(fifo_wr[i-1]),
-        .i_inst(inst_temp[2*i-1:2*(i-1)]),
-        .o_inst(inst_temp[2*(i+1)-1:2*(i)]),
-	.out(out[bw_psum*i-1 : bw_psum*(i-1)])
-   );
-end
+        .fifo_wr(fifo_wr[i]),
+        .i_inst(inst_chain[i]),
+        .o_inst(inst_chain[i+1]),
+        .out(out[BW_PSUM*(i+1)-1 : BW_PSUM*i])
+    );
+  end
 
 endmodule
