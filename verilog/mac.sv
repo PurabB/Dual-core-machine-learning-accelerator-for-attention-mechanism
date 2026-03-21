@@ -13,44 +13,34 @@ module mac #(
 
   localparam int StageNum = $clog2(PR);
 
-  // Stage 0: register inputs for retiming (lets DC push logic across)
-  logic signed [BW-1:0] a_reg [PR];
-  logic signed [BW-1:0] b_reg [PR];
+  // Stage 0: pipelined multiplier — register products
+  logic signed [2*BW-1:0] products [PR];
 
   always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-      for (int i = 0; i < PR; i++) begin
-        a_reg[i] <= '0;
-        b_reg[i] <= '0;
-      end
-    end else begin
-      for (int i = 0; i < PR; i++) begin
-        a_reg[i] <= $signed(a[BW*(i+1)-1-:BW]);
-        b_reg[i] <= $signed(b[BW*(i+1)-1-:BW]);
-      end
-    end
-  end
-
-  // Stage 1: multiply from registered inputs
-  // Stage 2+: pipelined adder tree
-  logic signed [BW_PSUM-1:0] stage_data[StageNum+1][PR];
-
-  always_ff @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-      for (int i = 0; i <= StageNum; i++)
-        for (int j = 0; j < PR; j++)
-          stage_data[i][j] <= '0;
+      for (int i = 0; i < PR; i++)
+        products[i] <= '0;
     end else begin
       for (int i = 0; i < PR; i++)
-        stage_data[0][i] <= a_reg[i] * b_reg[i];
-
-      for (int s = 1; s <= StageNum; s++)
-        for (int i = 0; i < (PR >> s); i++)
-          stage_data[s][i] <=
-              stage_data[s-1][2*i] + stage_data[s-1][2*i+1];
+        products[i] <= $signed(a[BW*(i+1)-1-:BW])
+                     * $signed(b[BW*(i+1)-1-:BW]);
     end
   end
 
-  assign out = stage_data[StageNum][0];
+  // Combinational adder tree (no pipeline registers)
+  logic signed [BW_PSUM-1:0] tree [StageNum+1][PR];
+
+  always_comb begin
+    // Extend products to full width
+    for (int i = 0; i < PR; i++)
+      tree[0][i] = BW_PSUM'(products[i]);
+
+    // Adder tree stages — all combinational
+    for (int s = 1; s <= StageNum; s++)
+      for (int i = 0; i < (PR >> s); i++)
+        tree[s][i] = tree[s-1][2*i] + tree[s-1][2*i+1];
+  end
+
+  assign out = tree[StageNum][0];
 
 endmodule
