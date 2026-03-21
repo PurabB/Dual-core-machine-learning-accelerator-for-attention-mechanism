@@ -17,9 +17,9 @@ module mac_col #(
     output logic                      fifo_wr
 );
 
-  // MAC pipeline depth: 1 (input reg) + 1 (multiply) + $clog2(PR) (adder tree)
+  // MAC pipeline: 2 (pipelined multiply) + 1 (extend) + $clog2(PR) (adder tree)
   // query_q non-blocking adds 1 more cycle
-  localparam int MAC_LATENCY = $clog2(PR) + 2;
+  localparam int MAC_LATENCY = $clog2(PR) + 3;
 
   logic                      load_ready_q;
   logic        [        3:0] cnt_q;

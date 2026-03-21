@@ -57,10 +57,15 @@ setAnalysisMode -analysisType onChipVariation
 optDesign -postRoute
 
 #--- Reports ---
-report_timing > reports/dualcore_timing.txt
+report_timing -nworst 5 -path_type full_clock \
+    > reports/dualcore_timing.txt
+report_timing -nworst 5 -path_type full_clock -check_type hold \
+    >> reports/dualcore_timing.txt
 report_power  > reports/dualcore_power.txt
 report_area   > reports/dualcore_area.txt
 timeDesign -postRoute -prefix postRoute > reports/dualcore_wns.txt
+timeDesign -postRoute -hold -prefix postRoute_hold \
+    >> reports/dualcore_wns.txt
 
 verify_drc    > reports/dualcore_drc.txt
 verifyConnectivity > reports/dualcore_lvs.txt

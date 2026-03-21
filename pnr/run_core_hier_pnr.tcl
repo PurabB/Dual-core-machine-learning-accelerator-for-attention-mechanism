@@ -67,10 +67,15 @@ setAnalysisMode -analysisType onChipVariation
 optDesign -postRoute
 
 #--- Reports ---
-report_timing > reports/core_hier_timing.txt
+report_timing -nworst 5 -path_type full_clock \
+    > reports/core_hier_timing.txt
+report_timing -nworst 5 -path_type full_clock -check_type hold \
+    >> reports/core_hier_timing.txt
 report_power  > reports/core_hier_power.txt
 report_area   > reports/core_hier_area.txt
 timeDesign -postRoute -prefix postRoute > reports/core_hier_wns.txt
+timeDesign -postRoute -hold -prefix postRoute_hold \
+    >> reports/core_hier_wns.txt
 
 verify_drc         > reports/core_hier_drc.txt
 verifyConnectivity > reports/core_hier_lvs.txt
