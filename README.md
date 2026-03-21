@@ -1,3 +1,14 @@
+# Overall Sturcture
+
+Q_vec →  [mac_col_0] → [mac_col_1] → [mac_col_2] → ...
+             K_0            K_1            K_2
+             ↓              ↓              ↓
+           Q·K0           Q·K1           Q·K2
+
+- Then Normalize
+
+> `qk(b,i,j, bw) = q(b,i,d, bw) k(b,j,d, bw)`. in this case, `i=j=8, d=8, b=1, bw=8`
+
 # Step1: Single core RTL, Synthesis & PNR.
 
 - Single core matrix multiplier RTL and TB is provided in "public/course_contents/ece260_project/" directory.
@@ -12,12 +23,7 @@
 
 - 1 Row 1 Cycle
 
-Q_vec →  [mac_col_0] → [mac_col_1] → [mac_col_2] → ...
-             K_0            K_1            K_2
-             ↓              ↓              ↓
-           Q·K0           Q·K1           Q·K2
 
-Remember: `qk(b,i,j) = q(b,i,d) k(j,d)`, in this case, `i=j=8, d=16, b=1`
 
      - Synthesize and run PnR to get the WNS, power, and area report by targeting 1GHz
 
@@ -215,50 +221,30 @@ As one of the extreme experiments, you could copy the "tcbn65gplus.v" into your 
 Even if you do not apply any of above methods, it could work suddenly once you simply re-synthesize. Or, even if your synthesized version does not work, your PnRed version could work.
 
  
-
-4. Do I need to check empty and full condition ?
-
-It is a plus, but it is fine not to equip by assuming your instruction provider (programmer) will be able to manage to avoid those conditions. 
-
- 
-
-5. For single core or dual core version (before optimization), do we need to meet timing ?
-
-No, as you haven't applied any pipeline, multi-cycle and others, you won't be able to meet 1GHz in Step1 or dual core before optimization.
-
-Please try with relaxed clock frequency initially. Then, you can show the improvement by meeting 1GHz after all optimizations.
-
- 
-
 6. Are we supposed to use the output of norm(Q*K) stage as an input of norm*v stage ?
 
 It is good, but not required. You may use just provided norm.txt file.
 
  
-
 7. The output of norm(Q*K) stage should be identical to the provided norm.txt file ?
 
 No, it is not.
 
  
-
 8. Do I need to use "FIFO" style for async interface ?
 
 Not, necessarily. FIFO might be faster in terms of data transaction bandwidth, but other options are also fine.
 
- 
 
 9. My synthesis / PnR takes so long.
 
 Then, you might check your sdc file. You might be building the hardware with impossible timing condition.
 
- 
 
 10. Do I need to care the timing of reset path ?
 
 No, you may use "set_false_path" command for reset.
 
- 
 
 11. In the normalization process, both nominator and denominators should be absoluted ?
 
@@ -266,43 +252,32 @@ Yes, both of them. In the cartoon in the project explanation slide, the abs is m
 
 But, as described in the official project description in this page, you should apply absolute for both.
 
- 
 
 12. How to verify Normalized output?
 
 You need to create stimulus from TB end using qdata, kdata, then, hook the norm out from design and verify/print the outputs to check by building a simple test function in the TB.
 
- 
-
 13. The final version should included all the features listed, e.g., dual core, async interface and others ?
 
 Yes, your final version should include everything.
 
- 
 
 14. Our team members are dropping the course. How about the policy ?
 
 As given in the lecture 1, a single member team has 10% benefit, and 2-member team has 5% benefit in score.
 
- 
-
 15. Am I supposed to modify TB ?
 
 Yes, you should.
-
- 
 
 16. SFP should be in the middle between mac array and ofifo ?
 
 No, SFP should be attached after OFIFO.
 
- 
 
 17. Is there any port limitation ?
 
 No, it is completely free to change the ports of any block.
-
- 
 
 18. Which version am I supposed to show the synthesis and PNR results ?
 
@@ -310,69 +285,40 @@ You should submit the synthesis and pnr results for 1. single core version and 2
 
 But, you might want to do PNR for the dual core of un-optimized version to show the improvement.
 
- 
-
 19. Are we supposed to meet the timing for Worst corner ?
 
 Such as other homeworks, you do not need to meet the Worst corner, but should meet at TYP corner.
 
 However, you should include Worst or Best corners during the synthesis and PnR.
 
- 
-
 21. Am I supposed to use the only 1 tb file ?
 
 No, you can have multiple separate tb files for each test.
-
- 
 
 22. My SFP should receive the input from ofifo directly or pmem ?
 
 In general, pmem's output is fed as an input of SFP, but you may directly connect the ofifo's output as an input of SFP with proper modifications.
 
- 
-
 23. If I cannot verify the functionality through gate-level sim, my score will be deducted ?
 
 Yes
-
- 
 
 24. Do we need to use SDF file for gate-level sim ?
 
 It is not required but good to have.
 
- 
-
 25. The very final computed results should be stored back in the pmem ?
 
 Yes, it is recommended. So, your pmem output could be connected to the output port. Then, your final results fetched from pmem can be validated in the test bench.
-
- 
-
-26. There is a "sfp_row.v" file in the verilog directory. Are we supposed to use this ? 
-
-Not necessarily. It is just an example. You could exploit by modifying it or build your own version.
-
- 
 
 27. Sub-modul has many LVS error of dangling nodes.
 
 It is expected as you do not have a power ring. It is okay.
 
- 
-
 28. Why we have sub-module LVS violations ?
 
 Since you did not setup a power ring for submodule pnr, it is expected to have a dangling node. As we don't have a ring you will get these violations.
  
-
 29. The provided code has 16 input MAC. Should I change to be 8 input ?
 
 Yes, the provided code is just an example.
-
- 
-
-30. For the implementation of normalization, can I use parallel adder tree?
-
-Yes

@@ -12,28 +12,23 @@ module fullchip #(
     input  logic [      PR*BW-1:0] mem_in0,
     input  logic [      PR*BW-1:0] mem_in1,
     output logic [BW_PSUM*COL-1:0] out0,
-    output logic [BW_PSUM*COL-1:0] out1,
-    // Sparsity control (Step 6)
-    input  logic                   enable_elem_sparsity,
-    input  logic [    BW_PSUM-1:0] threshold_elem,
-    input  logic                   enable_row_sparsity,
-    input  logic [    BW_PSUM+3:0] threshold_row
+    output logic [BW_PSUM*COL-1:0] out1
 );
 
+  localparam int SumBW = BW_PSUM + $clog2(COL);
+
   // Sum exchange between cores
-  logic [BW_PSUM+3:0] sum_out0;  // sum from core0
-  logic [BW_PSUM+3:0] sum_out1;  // sum from core1
+  logic [SumBW-1:0] sum_out0;
+  logic [SumBW-1:0] sum_out1;
 
   // Synchronized sums (cross-clock domain)
-  logic [BW_PSUM+3:0] sum0_to_core1_sync;
-  logic [BW_PSUM+3:0] sum1_to_core0_sync;
+  logic [SumBW-1:0] sum0_to_core1_sync;
+  logic [SumBW-1:0] sum1_to_core0_sync;
 
-  // Division ready signals from each core (MCP - Multi-Cycle Path)
+  // Division ready signals from each core
   logic div_ready0, div_ready1;
 
-  // Toggle-based CDC (Clock Domain Crossing) for div_ready pulses across clock domains
-  // Each div_ready pulse toggles a signal; edge detection in dest domain
-  // recovers the pulse reliably across async clocks.
+  // Toggle-based CDC for div_ready pulses across clock domains
   logic div_ready0_toggle;
   always_ff @(posedge clk0) begin
     if (reset) div_ready0_toggle <= 0;
@@ -47,8 +42,8 @@ module fullchip #(
   end
 
   // Sync toggles across clock domains
-  logic div_ready0_toggle_sync;  // clk0 -> clk1
-  logic div_ready1_toggle_sync;  // clk1 -> clk0
+  logic div_ready0_toggle_sync;
+  logic div_ready1_toggle_sync;
 
   sync sync_dr0_toggle (
       .clk(clk1),
@@ -61,7 +56,7 @@ module fullchip #(
       .out(div_ready1_toggle_sync)
   );
 
-  // Edge detection in destination domain to recover ext FIFO read pulse
+  // Edge detection in destination domain
   logic div_ready0_toggle_sync_d;
   always_ff @(posedge clk1) begin
     if (reset) div_ready0_toggle_sync_d <= 0;
@@ -74,9 +69,7 @@ module fullchip #(
     else div_ready1_toggle_sync_d <= div_ready1_toggle_sync;
   end
 
-  // External FIFO (First In First Out) read: pulse when other core captures div result
-  // fifo_ext_rd0: core1's div_ready -> read core0's ext FIFO (in clk0 domain)
-  // fifo_ext_rd1: core0's div_ready -> read core1's ext FIFO (in clk1 domain)
+  // External FIFO read: pulse when other core captures div result
   logic fifo_ext_rd0;
   logic fifo_ext_rd1;
 
@@ -100,11 +93,7 @@ module fullchip #(
       .fifo_ext_rd(fifo_ext_rd1),
       .sum_out(sum_out0),
       .out(out0),
-      .div_ready(div_ready0),
-      .enable_elem_sparsity(enable_elem_sparsity),
-      .threshold_elem(threshold_elem),
-      .enable_row_sparsity(enable_row_sparsity),
-      .threshold_row(threshold_row)
+      .div_ready(div_ready0)
   );
 
   //--- Core 1 (clk1 domain) ---
@@ -122,15 +111,11 @@ module fullchip #(
       .fifo_ext_rd(fifo_ext_rd0),
       .sum_out(sum_out1),
       .out(out1),
-      .div_ready(div_ready1),
-      .enable_elem_sparsity(enable_elem_sparsity),
-      .threshold_elem(threshold_elem),
-      .enable_row_sparsity(enable_row_sparsity),
-      .threshold_row(threshold_row)
+      .div_ready(div_ready1)
   );
 
   //--- Cross-clock domain synchronizers for sum exchange ---
-  for (genvar i = 0; i < BW_PSUM + 4; i++) begin : sync_0to1
+  for (genvar i = 0; i < SumBW; i++) begin : sync_0to1
     sync sync_inst (
         .clk(clk1),
         .in (sum_out0[i]),
@@ -138,7 +123,7 @@ module fullchip #(
     );
   end
 
-  for (genvar i = 0; i < BW_PSUM + 4; i++) begin : sync_1to0
+  for (genvar i = 0; i < SumBW; i++) begin : sync_1to0
     sync sync_inst (
         .clk(clk0),
         .in (sum_out1[i]),

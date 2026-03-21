@@ -1,0 +1,31 @@
+VERIFY_CONNECTIVITY use new engine.
+
+******** Start: VERIFY CONNECTIVITY ********
+Start Time: Fri Mar 20 22:27:09 2026
+
+Design Name: core_COL8_BW8_BW_PSUM20_PR8_OBW10
+Database Units: 2000
+Design Boundary: (0.0000, 0.0000) (1043.4000, 1039.8000)
+Error Limit = 1000; Warning Limit = 50
+Check all nets
+**** 22:27:09 **** Processed 5000 nets.
+**** 22:27:09 **** Processed 10000 nets.
+**** 22:27:09 **** Processed 15000 nets.
+**** 22:27:10 **** Processed 20000 nets.
+**** 22:27:10 **** Processed 25000 nets.
+**** 22:27:10 **** Processed 30000 nets.
+**** 22:27:10 **** Processed 35000 nets.
+**** 22:27:10 **** Processed 40000 nets.
+**** 22:27:10 **** Processed 45000 nets.
+
+Begin Summary 
+  Found no problems or warnings.
+End Summary
+
+End Time: Fri Mar 20 22:27:10 2026
+Time Elapsed: 0:00:01.0
+
+******** End: VERIFY CONNECTIVITY ********
+  Verification Complete : 0 Viols.  0 Wrngs.
+  (CPU Time: 0:00:01.7  MEM: 0.000M)
+

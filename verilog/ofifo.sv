@@ -17,14 +17,12 @@ module ofifo #(
   logic [COL-1:0] empty;
 
   always_comb begin
-    o_full = full[7];
-    o_valid = !empty[0] && !empty[1] && !empty[2]
-           && !empty[3] && !empty[4] && !empty[5]
-           && !empty[6] && !empty[7];
+    o_full  = full[7];
+    o_valid = ~|empty;
   end
 
-  for (genvar i = 0; i < COL; i++) begin : col_idx
-    fifo_depth16 #(
+  for (genvar i = 0; i < COL; i++) begin : g_col_idx
+    async_fifo #(
         .BW  (BW),
         .SIMD(SIMD)
     ) fifo_instance (

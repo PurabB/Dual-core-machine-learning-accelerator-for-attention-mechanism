@@ -1,47 +1,27 @@
-// Created by prof. Mingu Kang @VVIP Lab in UCSD ECE department
-// Please do not spread this code without permission
-// Modified: Fixed module instantiation (core, not fullchip).
-// Added MCP (Multi-Cycle Path) timing for normalization div phase.
-
 `timescale 1ns / 1ps
 
 module fullchip_tb;
 
-  parameter int TOTAL_CYCLE = 8;  // how many streamed Q vectors will be processed
-  parameter int BW = 8;  // Q & K vector bit precision
-  parameter int BW_PSUM = 2 * BW + 4;  // partial sum bit precision
-  parameter int PR = 16;  // how many products added in each dot product
-  parameter int COL = 8;  // how many dot product units are equipped
-  parameter int MCP = 4;  // Multi-Cycle Path cycles for division
+  parameter int TOTAL_CYCLE = 8;
+  parameter int BW = 8;
+  parameter int BW_PSUM = 2 * BW + 4;
+  parameter int PR = 8;
+  parameter int COL = 8;
+  parameter int OBW = 10;
 
-  integer qk_file;  // file handler
-  integer qk_scan_file;  // file handler
-
-
-  integer captured_data;
-  integer weight[COL*PR-1:0];
-  `define NULL 0
-
-
-
+  integer qk_file, qk_scan_file, captured_data;
 
   integer K[COL-1:0][PR-1:0];
   integer Q[TOTAL_CYCLE-1:0][PR-1:0];
   integer result[TOTAL_CYCLE-1:0][COL-1:0];
-  integer sum[TOTAL_CYCLE-1:0];
-  integer abs_result[TOTAL_CYCLE-1:0][COL-1:0];
-  integer norm_result[TOTAL_CYCLE-1:0][COL-1:0];
 
-  integer i, j, k, t, p, q, s, u, m;
+  integer i, j, k, t, p, q, s;
 
-
-
-
-  logic reset = 1;
+  logic rst_n = 0;
   logic clk = 0;
   logic [PR*BW-1:0] mem_in;
   logic ofifo_rd = 0;
-  logic [16:0] inst;
+  logic [18:0] inst;
   logic qmem_rd = 0;
   logic qmem_wr = 0;
   logic kmem_rd = 0;
@@ -50,13 +30,17 @@ module fullchip_tb;
   logic pmem_wr = 0;
   logic execute = 0;
   logic load = 0;
+  logic sfp_start = 0;
+  logic sfp_sel = 0;
   logic [3:0] qkmem_add = 0;
   logic [3:0] pmem_add = 0;
 
   logic [BW_PSUM*COL-1:0] out;
-  logic div_ready_out;
+  logic sfp_done;
 
   always_comb begin
+    inst[18]    = sfp_sel;
+    inst[17]    = sfp_start;
     inst[16]    = ofifo_rd;
     inst[15:12] = qkmem_add;
     inst[11:8]  = pmem_add;
@@ -70,441 +54,201 @@ module fullchip_tb;
     inst[0]     = pmem_wr;
   end
 
-
-
   logic [BW_PSUM-1:0] temp5b;
-  logic [BW_PSUM+3:0] temp_sum;
   logic [BW_PSUM*COL-1:0] temp16b;
 
-
-
-  // Instantiate single core for testing (not fullchip)
-  // Tie off dual-core and sparsity ports
   core #(
       .BW(BW),
       .BW_PSUM(BW_PSUM),
       .COL(COL),
-      .PR(PR)
+      .PR(PR),
+      .OBW(OBW)
   ) core_instance (
-      .reset(reset),
+      .rst_n(rst_n),
       .clk(clk),
       .mem_in(mem_in),
       .inst(inst),
       .out(out),
-      .sum_in({(BW_PSUM + 4) {1'b0}}),
-      .fifo_ext_rd(1'b0),
-      .sum_out(),
-      .div_ready(div_ready_out),
-      .enable_elem_sparsity(1'b0),
-      .threshold_elem({BW_PSUM{1'b0}}),
-      .enable_row_sparsity(1'b0),
-      .threshold_row({(BW_PSUM + 4) {1'b0}})
+      .sfp_done(sfp_done)
   );
 
-
   initial begin
-
     $dumpfile("fullchip_tb.vcd");
     $dumpvars(0, fullchip_tb);
 
-
-
-    ///// Q data txt reading /////
-
-    $display("##### Q data txt reading #####");
-
-
+    ///// Q data reading /////
+    $display("##### Q data reading #####");
     qk_file = $fopen("qdata.txt", "r");
-
-    //// To get rid of first 3 lines in data file ////
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-
-
-    for (q = 0; q < TOTAL_CYCLE; q = q + 1) begin
-      for (j = 0; j < PR; j = j + 1) begin
-        qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+    for (q = 0; q < TOTAL_CYCLE; q++) begin
+      for (j = 0; j < PR; j++) begin
+        qk_scan_file = $fscanf(qk_file, "%d", captured_data);
         Q[q][j] = captured_data;
       end
     end
-    /////////////////////////////////
+    $fclose(qk_file);
 
-
-
-
-    for (q = 0; q < 2; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-
-
-
-
-    ///// K data txt reading /////
-
-    $display("##### K data txt reading #####");
-
-    for (q = 0; q < 10; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-    reset = 0;
-
+    ///// K data reading /////
+    $display("##### K data reading #####");
     qk_file = $fopen("kdata.txt", "r");
-
-    //// To get rid of first 4 lines in data file ////
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-    qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
-
-
-
-
-    for (q = 0; q < COL; q = q + 1) begin
-      for (j = 0; j < PR; j = j + 1) begin
-        qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+    for (q = 0; q < COL; q++) begin
+      for (j = 0; j < PR; j++) begin
+        qk_scan_file = $fscanf(qk_file, "%d", captured_data);
         K[q][j] = captured_data;
       end
     end
-    /////////////////////////////////
+    $fclose(qk_file);
 
-
-
-
-
-
-
-
-    /////////////// Estimated result printing /////////////////
-
-
-    $display("##### Estimated multiplication result #####");
-
-    for (t = 0; t < TOTAL_CYCLE; t = t + 1) begin
-      for (q = 0; q < COL; q = q + 1) begin
+    /////////////// Expected result /////////////////
+    $display("##### Expected multiplication result #####");
+    for (t = 0; t < TOTAL_CYCLE; t++) begin
+      for (q = 0; q < COL; q++) begin
         result[t][q] = 0;
-      end
-    end
-
-    for (t = 0; t < TOTAL_CYCLE; t = t + 1) begin
-      for (q = 0; q < COL; q = q + 1) begin
-        for (k = 0; k < PR; k = k + 1) begin
+        for (k = 0; k < PR; k++)
           result[t][q] = result[t][q] + Q[t][k] * K[q][k];
-        end
-
         temp5b  = result[t][q];
-        temp16b = {temp16b[139:0], temp5b};
+        temp16b = {temp16b[BW_PSUM*(COL-1)-1:0], temp5b};
       end
-
       $display("prd @cycle%2d: %40h", t, temp16b);
     end
 
-    //////////////////////////////////////////////
+    // Reset
+    repeat (2) begin #0.5 clk = 0; #0.5 clk = 1; end
+    repeat (10) begin #0.5 clk = 0; #0.5 clk = 1; end
+    rst_n = 1;
 
-
-    /////////////// Estimated normalization result /////////////////
-
-    $display("##### Estimated normalization result #####");
-
-    for (t = 0; t < TOTAL_CYCLE; t = t + 1) begin
-      sum[t] = 0;
-      for (q = 0; q < COL; q = q + 1) begin
-        if (result[t][q] < 0) abs_result[t][q] = -result[t][q];
-        else abs_result[t][q] = result[t][q];
-        sum[t] = sum[t] + abs_result[t][q];
-      end
-
-      $display("sum @cycle%2d: %d", t, sum[t]);
-
-      for (q = 0; q < COL; q = q + 1) begin
-        // Division-based normalization (signed / sum)
-        if (sum[t] != 0) norm_result[t][q] = result[t][q] / (sum[t] >> 7);
-        else norm_result[t][q] = 0;
-      end
-
-      $display("norm @cycle%2d: %d %d %d %d %d %d %d %d", t, norm_result[t][0], norm_result[t][1],
-               norm_result[t][2], norm_result[t][3], norm_result[t][4], norm_result[t][5],
-               norm_result[t][6], norm_result[t][7]);
-    end
-
-    //////////////////////////////////////////////
-
-
-
-
-    ///// Qmem writing  /////
-
-    $display("##### Qmem writing  #####");
-
-    for (q = 0; q < TOTAL_CYCLE; q = q + 1) begin
-
-      #0.5 clk = 1'b0;
+    ///// Qmem writing /////
+    $display("##### Qmem writing #####");
+    for (q = 0; q < TOTAL_CYCLE; q++) begin
+      #0.5 clk = 0;
       qmem_wr = 1;
       if (q > 0) qkmem_add = qkmem_add + 1;
-
-      mem_in[1*BW-1:0*BW]   = Q[q][0];
-      mem_in[2*BW-1:1*BW]   = Q[q][1];
-      mem_in[3*BW-1:2*BW]   = Q[q][2];
-      mem_in[4*BW-1:3*BW]   = Q[q][3];
-      mem_in[5*BW-1:4*BW]   = Q[q][4];
-      mem_in[6*BW-1:5*BW]   = Q[q][5];
-      mem_in[7*BW-1:6*BW]   = Q[q][6];
-      mem_in[8*BW-1:7*BW]   = Q[q][7];
-      mem_in[9*BW-1:8*BW]   = Q[q][8];
-      mem_in[10*BW-1:9*BW]  = Q[q][9];
-      mem_in[11*BW-1:10*BW] = Q[q][10];
-      mem_in[12*BW-1:11*BW] = Q[q][11];
-      mem_in[13*BW-1:12*BW] = Q[q][12];
-      mem_in[14*BW-1:13*BW] = Q[q][13];
-      mem_in[15*BW-1:14*BW] = Q[q][14];
-      mem_in[16*BW-1:15*BW] = Q[q][15];
-
-      #0.5 clk = 1'b1;
-
+      for (j = 0; j < PR; j++)
+        mem_in[(j+1)*BW-1 -: BW] = Q[q][j];
+      #0.5 clk = 1;
     end
+    #0.5 clk = 0; qmem_wr = 0; qkmem_add = 0; #0.5 clk = 1;
 
-
-    #0.5 clk = 1'b0;
-    qmem_wr   = 0;
-    qkmem_add = 0;
-    #0.5 clk = 1'b1;
-    ///////////////////////////////////////////
-
-
-
-
-    ///// Kmem writing  /////
-
+    ///// Kmem writing /////
     $display("##### Kmem writing #####");
-
-    for (q = 0; q < COL; q = q + 1) begin
-
-      #0.5 clk = 1'b0;
+    for (q = 0; q < COL; q++) begin
+      #0.5 clk = 0;
       kmem_wr = 1;
       if (q > 0) qkmem_add = qkmem_add + 1;
-
-      mem_in[1*BW-1:0*BW]   = K[q][0];
-      mem_in[2*BW-1:1*BW]   = K[q][1];
-      mem_in[3*BW-1:2*BW]   = K[q][2];
-      mem_in[4*BW-1:3*BW]   = K[q][3];
-      mem_in[5*BW-1:4*BW]   = K[q][4];
-      mem_in[6*BW-1:5*BW]   = K[q][5];
-      mem_in[7*BW-1:6*BW]   = K[q][6];
-      mem_in[8*BW-1:7*BW]   = K[q][7];
-      mem_in[9*BW-1:8*BW]   = K[q][8];
-      mem_in[10*BW-1:9*BW]  = K[q][9];
-      mem_in[11*BW-1:10*BW] = K[q][10];
-      mem_in[12*BW-1:11*BW] = K[q][11];
-      mem_in[13*BW-1:12*BW] = K[q][12];
-      mem_in[14*BW-1:13*BW] = K[q][13];
-      mem_in[15*BW-1:14*BW] = K[q][14];
-      mem_in[16*BW-1:15*BW] = K[q][15];
-
-      #0.5 clk = 1'b1;
-
+      for (j = 0; j < PR; j++)
+        mem_in[(j+1)*BW-1 -: BW] = K[q][j];
+      #0.5 clk = 1;
     end
+    #0.5 clk = 0; kmem_wr = 0; qkmem_add = 0; #0.5 clk = 1;
 
-    #0.5 clk = 1'b0;
-    kmem_wr   = 0;
-    qkmem_add = 0;
-    #0.5 clk = 1'b1;
-    ///////////////////////////////////////////
+    repeat (2) begin #0.5 clk = 0; #0.5 clk = 1; end
 
-
-
-    for (q = 0; q < 2; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-
-
-
-
-    /////  K data loading  /////
-    $display("##### K data loading to processor #####");
-
-    for (q = 0; q < COL + 1; q = q + 1) begin
-      #0.5 clk = 1'b0;
+    ///// K data loading to mac_col /////
+    $display("##### K loading to processor #####");
+    for (q = 0; q < COL + 1; q++) begin
+      #0.5 clk = 0;
       load = 1;
       if (q == 1) kmem_rd = 1;
-      if (q > 1) begin
-        qkmem_add = qkmem_add + 1;
-      end
-
-      #0.5 clk = 1'b1;
+      if (q > 1) qkmem_add = qkmem_add + 1;
+      #0.5 clk = 1;
     end
+    #0.5 clk = 0; kmem_rd = 0; qkmem_add = 0; #0.5 clk = 1;
+    #0.5 clk = 0; load = 0; #0.5 clk = 1;
 
-    #0.5 clk = 1'b0;
-    kmem_rd   = 0;
-    qkmem_add = 0;
-    #0.5 clk = 1'b1;
+    repeat (10) begin #0.5 clk = 0; #0.5 clk = 1; end
 
-    #0.5 clk = 1'b0;
-    load = 0;
-    #0.5 clk = 1'b1;
-
-    ///////////////////////////////////////////
-
-    for (q = 0; q < 10; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-
-
-
-
-
-    ///// execution  /////
-    $display("##### execute #####");
-
-    for (q = 0; q < TOTAL_CYCLE; q = q + 1) begin
-      #0.5 clk = 1'b0;
+    ///// Execution /////
+    $display("##### Execute #####");
+    for (q = 0; q < TOTAL_CYCLE; q++) begin
+      #0.5 clk = 0;
       execute = 1;
       qmem_rd = 1;
-
-      if (q > 0) begin
-        qkmem_add = qkmem_add + 1;
-      end
-
-      #0.5 clk = 1'b1;
+      if (q > 0) qkmem_add = qkmem_add + 1;
+      #0.5 clk = 1;
     end
+    #0.5 clk = 0; qmem_rd = 0; qkmem_add = 0; execute = 0; #0.5 clk = 1;
 
-    #0.5 clk = 1'b0;
-    qmem_rd   = 0;
-    qkmem_add = 0;
-    execute   = 0;
-    #0.5 clk = 1'b1;
+    repeat (10) begin #0.5 clk = 0; #0.5 clk = 1; end
 
-
-    ///////////////////////////////////////////
-
-    for (q = 0; q < 10; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-
-
-
-
-    ////////////// output fifo rd and wb to psum mem ///////////////////
-
-    $display("##### move ofifo to pmem #####");
-
-    for (q = 0; q < TOTAL_CYCLE; q = q + 1) begin
-      #0.5 clk = 1'b0;
+    ///// OFIFO read & write to pmem /////
+    $display("##### Move OFIFO to PMEM #####");
+    for (q = 0; q < TOTAL_CYCLE; q++) begin
+      #0.5 clk = 0;
       ofifo_rd = 1;
       pmem_wr  = 1;
-
-      if (q > 0) begin
-        pmem_add = pmem_add + 1;
-      end
-
-      #0.5 clk = 1'b1;
+      if (q > 0) pmem_add = pmem_add + 1;
+      #0.5 clk = 1;
     end
+    #0.5 clk = 0; pmem_wr = 0; pmem_add = 0; ofifo_rd = 0; #0.5 clk = 1;
 
-    #0.5 clk = 1'b0;
-    pmem_wr  = 0;
-    pmem_add = 0;
-    ofifo_rd = 0;
-    #0.5 clk = 1'b1;
+    repeat (5) begin #0.5 clk = 0; #0.5 clk = 1; end
 
-    ///////////////////////////////////////////
-
-
-    for (q = 0; q < 5; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-
-
-    ////////////// Step 2: Normalization - accumulate ///////////////////
-
-    $display("##### Normalization: accumulate phase #####");
-
-    // Read each pmem row and accumulate abs sum via sfp_row
-    for (q = 0; q < TOTAL_CYCLE; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      pmem_rd = 1;
-      execute = 1;  // sfp_acc = execute && pmem_rd && !load
-      load = 0;
-      pmem_add = q;
-      #0.5 clk = 1'b1;
-    end
-
-    #0.5 clk = 1'b0;
-    pmem_rd  = 0;
-    execute  = 0;
-    pmem_add = 0;
-    #0.5 clk = 1'b1;
-
-    for (q = 0; q < 5; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-
-    ////////////// Step 2: Normalization - divide & writeback (MCP) ///////////////////
-
-    $display("##### Normalization: divide and writeback phase (MCP=%0d) #####", MCP);
-
-    // For each row: hold pmem_add for MCP+1 cycles (MCP for division + 1 for writeback)
-    // The core gates pmem_wr with div_ready_d, so we can assert pmem_wr throughout
-    // Then 1 idle cycle to reset mcp_cnt before next row
-    for (q = 0; q < TOTAL_CYCLE; q = q + 1) begin
-      // MCP+1 cycles: division + writeback (core auto-gates the write)
-      for (m = 0; m < MCP + 1; m = m + 1) begin
-        #0.5 clk = 1'b0;
-        pmem_rd = 1;
-        pmem_wr = 1;
-        load = 1;  // sfp_div = load && pmem_rd && !execute
-        execute = 0;
-        pmem_add = q;
-        #0.5 clk = 1'b1;
-      end
-      // 1 idle cycle to reset mcp_cnt for next row
-      #0.5 clk = 1'b0;
-      pmem_rd = 0;
-      pmem_wr = 0;
-      load = 0;
-      #0.5 clk = 1'b1;
-    end
-
-    ///////////////////////////////////////////
-
-    for (q = 0; q < 5; q = q + 1) begin
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-    end
-
-    ////////////// Read back normalized results for verification ///////////////////
-
-    $display("##### Read normalized results from pmem #####");
-
-    for (q = 0; q < TOTAL_CYCLE; q = q + 1) begin
-      #0.5 clk = 1'b0;
+    ///// Read back results for verification /////
+    $display("##### Read results from PMEM #####");
+    for (q = 0; q < TOTAL_CYCLE; q++) begin
+      #0.5 clk = 0;
       pmem_rd  = 1;
       pmem_add = q;
-      #0.5 clk = 1'b1;
+      #0.5 clk = 1;
+      // 1 cycle SRAM latency
+      #0.5 clk = 0; #0.5 clk = 1;
+      $display("HW prd @cycle%2d: %40h", q, out);
+    end
+    #0.5 clk = 0; pmem_rd = 0; pmem_add = 0; #0.5 clk = 1;
 
-      // After 1 cycle latency, read output
-      #0.5 clk = 1'b0;
-      #0.5 clk = 1'b1;
-      $display("HW norm @cycle%2d: %40h", q, out);
+    repeat (5) begin #0.5 clk = 0; #0.5 clk = 1; end
+
+    ///// sfp_row normalization /////
+    $display("##### SFP Row Normalization #####");
+    for (q = 0; q < TOTAL_CYCLE; q++) begin
+      // Step 1: Read row from pmem (1-cycle SRAM latency)
+      #0.5 clk = 0;
+      pmem_rd  = 1;
+      pmem_add = q;
+      #0.5 clk = 1;
+
+      // Step 2: pmem_out now valid, pulse sfp_start
+      #0.5 clk = 0;
+      pmem_rd   = 0;
+      sfp_start = 1;
+      #0.5 clk = 1;
+      #0.5 clk = 0;
+      sfp_start = 0;
+      #0.5 clk = 1;
+
+      // Step 3: Wait for sfp_done
+      while (!sfp_done) begin
+        #0.5 clk = 0; #0.5 clk = 1;
+      end
+
+      // Step 4: Write normalized result back to pmem
+      #0.5 clk = 0;
+      sfp_sel  = 1;
+      pmem_wr  = 1;
+      pmem_add = q;
+      #0.5 clk = 1;
+      #0.5 clk = 0;
+      sfp_sel  = 0;
+      pmem_wr  = 0;
+      #0.5 clk = 1;
+
+      $display("sfp_row normalized row %0d (done)", q);
     end
 
-    #0.5 clk = 1'b0;
-    pmem_rd  = 0;
-    pmem_add = 0;
-    #0.5 clk = 1'b1;
+    repeat (5) begin #0.5 clk = 0; #0.5 clk = 1; end
 
-    ///////////////////////////////////////////
-
+    ///// Read normalized results from PMEM /////
+    $display("##### Read Normalized Results #####");
+    for (q = 0; q < TOTAL_CYCLE; q++) begin
+      #0.5 clk = 0;
+      pmem_rd  = 1;
+      pmem_add = q;
+      #0.5 clk = 1;
+      #0.5 clk = 0; #0.5 clk = 1;
+      $display("norm @row%2d: %40h", q, out);
+    end
+    #0.5 clk = 0; pmem_rd = 0; pmem_add = 0; #0.5 clk = 1;
 
     #10 $finish;
-
-
   end
 
 endmodule

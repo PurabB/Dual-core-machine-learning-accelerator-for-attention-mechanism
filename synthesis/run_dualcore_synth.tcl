@@ -12,24 +12,19 @@ set rtl_path "../verilog"
 
 #--- Read all RTL ---
 analyze -format sverilog [list \
-    $rtl_path/fifo_mux_2_1.sv   \
-    $rtl_path/fifo_mux_8_1.sv   \
-    $rtl_path/fifo_mux_16_1.sv  \
-    $rtl_path/fifo_depth16.sv   \
-    $rtl_path/ofifo.sv          \
-    $rtl_path/mac_16in.sv       \
+    $rtl_path/mac.sv            \
     $rtl_path/mac_col.sv        \
     $rtl_path/mac_array.sv      \
+    $rtl_path/async_fifo.sv     \
+    $rtl_path/ofifo.sv          \
     $rtl_path/sram_w16.sv       \
-    $rtl_path/divider_mcp.sv    \
     $rtl_path/sfp_row.sv        \
-    $rtl_path/sparsity_ctrl.sv  \
     $rtl_path/sync.sv           \
     $rtl_path/core.sv           \
     $rtl_path/fullchip.sv       \
 ]
 
-elaborate fullchip -parameters "col=8, bw=8, bw_psum=20, pr=16"
+elaborate fullchip -parameters "COL=8, BW=8, BW_PSUM=20, PR=16"
 
 current_design fullchip
 link
@@ -58,8 +53,8 @@ set_output_delay 0.2 -clock clk1 [get_ports out1]
 set_driving_cell -lib_cell BUFFD1 [remove_from_collection [all_inputs] [get_ports {clk0 clk1}]]
 set_load 0.05 [all_outputs]
 
-#--- Compile ---
-compile_ultra
+#--- Compile with retiming for pipelined MAC ---
+compile_ultra -retime
 
 #--- Reports ---
 report_timing -max_paths 10 > reports/dualcore_timing.txt

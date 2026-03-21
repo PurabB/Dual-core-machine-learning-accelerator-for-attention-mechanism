@@ -1,0 +1,56 @@
+VERIFY_CONNECTIVITY use new engine.
+
+******** Start: VERIFY CONNECTIVITY ********
+Start Time: Sat Mar 21 04:38:40 2026
+
+Design Name: fullchip_COL8_BW8_BW_PSUM20_PR16
+Database Units: 2000
+Design Boundary: (0.0000, 0.0000) (1121.6000, 1118.2000)
+Error Limit = 1000; Warning Limit = 50
+Check all nets
+**** 04:38:40 **** Processed 5000 nets.
+**** 04:38:41 **** Processed 10000 nets.
+**** 04:38:41 **** Processed 15000 nets.
+**** 04:38:42 **** Processed 20000 nets.
+**** 04:38:42 **** Processed 25000 nets.
+**** 04:38:42 **** Processed 30000 nets.
+**** 04:38:42 **** Processed 35000 nets.
+**** 04:38:42 **** Processed 40000 nets.
+**** 04:38:42 **** Processed 45000 nets.
+**** 04:38:43 **** Processed 50000 nets.
+**** 04:38:43 **** Processed 55000 nets.
+**** 04:38:43 **** Processed 60000 nets.
+**** 04:38:43 **** Processed 65000 nets.
+**** 04:38:43 **** Processed 70000 nets.
+**** 04:38:43 **** Processed 75000 nets.
+**** 04:38:43 **** Processed 80000 nets.
+**** 04:38:43 **** Processed 85000 nets.
+**** 04:38:43 **** Processed 90000 nets.
+**** 04:38:44 **** Processed 95000 nets.
+**** 04:38:44 **** Processed 100000 nets.
+**** 04:38:44 **** Processed 105000 nets.
+**** 04:38:44 **** Processed 110000 nets.
+**** 04:38:44 **** Processed 115000 nets.
+**** 04:38:44 **** Processed 120000 nets.
+**** 04:38:44 **** Processed 125000 nets.
+**** 04:38:45 **** Processed 130000 nets.
+**** 04:38:45 **** Processed 135000 nets.
+**** 04:38:45 **** Processed 140000 nets.
+**** 04:38:45 **** Processed 145000 nets.
+**** 04:38:45 **** Processed 150000 nets.
+**** 04:38:45 **** Processed 155000 nets.
+**** 04:38:45 **** Processed 160000 nets.
+**** 04:38:46 **** Processed 165000 nets.
+**** 04:38:46 **** Processed 170000 nets.
+
+Begin Summary 
+  Found no problems or warnings.
+End Summary
+
+End Time: Sat Mar 21 04:38:46 2026
+Time Elapsed: 0:00:06.0
+
+******** End: VERIFY CONNECTIVITY ********
+  Verification Complete : 0 Viols.  0 Wrngs.
+  (CPU Time: 0:00:06.3  MEM: 0.000M)
+

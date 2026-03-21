@@ -2,25 +2,23 @@ module core #(
     parameter int COL     = 8,
     parameter int BW      = 8,
     parameter int BW_PSUM = 2 * BW + 4,
-    parameter int PR      = 16
+    parameter int PR      = 8,
+    parameter int OBW     = 10
 ) (
-    input logic clk,
-    input logic reset,
-    input logic [16:0] inst,
-    input logic [PR*BW-1:0] mem_in,
-    input logic [BW_PSUM+3:0] sum_in,  // sum from other core (dual-core)
-    // external FIFO (First In First Out) read (from other core)
-    input logic fifo_ext_rd,
-    output logic [BW_PSUM+3:0] sum_out,  // sum to other core (dual-core)
+    input  logic                   clk,
+    input  logic                   reset,     // active-high
+    input  logic [           16:0] inst,
+    input  logic [      PR*BW-1:0] mem_in,
+    // Dual-core sum exchange
+    input  logic [BW_PSUM+$clog2(COL)-1:0] sum_in,
+    input  logic                   fifo_ext_rd,
+    output logic [BW_PSUM+$clog2(COL)-1:0] sum_out,
     output logic [BW_PSUM*COL-1:0] out,
-    output logic div_ready,  // division result ready (MCP - Multi-Cycle Path)
-    // Element-level sparsity (Step 6 B1)
-    input logic enable_elem_sparsity,
-    input logic [BW_PSUM-1:0] threshold_elem,
-    // Row-level sparsity (Step 6 B2)
-    input logic enable_row_sparsity,
-    input logic [BW_PSUM+3:0] threshold_row
+    output logic                   div_ready
 );
+
+  logic rst_n;
+  assign rst_n = !reset;
 
   logic [BW_PSUM*COL-1:0] pmem_out;
   logic [      PR*BW-1:0] mac_in;
@@ -28,7 +26,6 @@ module core #(
   logic [      PR*BW-1:0] qmem_out;
   logic [BW_PSUM*COL-1:0] pmem_in;
   logic [BW_PSUM*COL-1:0] fifo_out;
-  logic [BW_PSUM*COL-1:0] sfp_out;
   logic [BW_PSUM*COL-1:0] array_out;
   logic [        COL-1:0] fifo_wr;
   logic                   ofifo_rd;
@@ -42,18 +39,27 @@ module core #(
   logic                   pmem_rd;
   logic                   pmem_wr;
 
-  // Instruction decode
-  // SFP (Softmax/normalization) control signals from instruction
-  // inst[7] = execute, inst[6] = load
-  // sfp_acc: accumulate when execute=1 + pmem_rd=1 + load=0
-  // sfp_div: divide when load=1 + pmem_rd=1 + execute=0
-  logic                   sfp_acc;
-  logic                   sfp_div;
+  // Instruction decode (17-bit for dual-core)
+  // inst[16] = ofifo_rd
+  // inst[15:12] = qkmem_add, inst[11:8] = pmem_add
+  // inst[7] = execute, inst[6] = load (wr_k)
+  // inst[5:0] = qmem_rd, qmem_wr, kmem_rd, kmem_wr, pmem_rd, pmem_wr
+  logic                   en;
+  logic                   wr_k;
+
+  // sfp_row signals
+  logic                   sfp_start;
+  logic                   sfp_done;
+  logic                   sfp_sel;
+  logic [OBW*COL-1:0]     sfp_out_raw;
+  logic [BW_PSUM*COL-1:0] sfp_out;
 
   always_comb begin
     ofifo_rd   = inst[16];
     qkmem_add  = inst[15:12];
     pmem_add   = inst[11:8];
+    en         = inst[7] | inst[6];
+    wr_k       = inst[6];
     qmem_rd    = inst[5];
     qmem_wr    = inst[4];
     kmem_rd    = inst[3];
@@ -61,17 +67,26 @@ module core #(
     pmem_rd    = inst[1];
     pmem_wr    = inst[0];
 
-    sfp_acc = inst[7] && !inst[6] && pmem_rd;
-    sfp_div = inst[6] && !inst[7] && pmem_rd;
-
-    mac_in  = inst[6] ? kmem_out : qmem_out;
-    // When sfp is writing back normalized results, use sfp_out; otherwise use fifo_out
-    pmem_in = (sfp_div) ? sfp_out : fifo_out;
+    mac_in  = wr_k ? kmem_out : qmem_out;
+    pmem_in = sfp_sel ? sfp_out : fifo_out;
   end
 
-  // Element-level sparsity (Step 6 B1)
-  logic [BW_PSUM*COL-1:0] gated_array_out;
-  logic [        COL-1:0] gate_mask;
+  // sfp_start: pulse when ofifo_rd falls (all rows written to PMEM)
+  logic ofifo_rd_d;
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) ofifo_rd_d <= 0;
+    else        ofifo_rd_d <= ofifo_rd;
+  end
+  assign sfp_start = ofifo_rd_d & ~ofifo_rd;
+
+  // sfp_sel: high from sfp_done until next execute
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) sfp_sel <= 0;
+    else if (sfp_done)        sfp_sel <= 1;
+    else if (en && !wr_k)     sfp_sel <= 0;
+  end
+
+  assign div_ready = sfp_done;
 
   mac_array #(
       .BW(BW),
@@ -79,82 +94,50 @@ module core #(
       .COL(COL),
       .PR(PR)
   ) mac_array_instance (
+      .clk(clk),
+      .rst_n(rst_n),
+      .en(en),
+      .wr_k(wr_k),
       .in(mac_in),
-      .clk(clk),
-      .reset(reset),
-      .inst(inst[7:6]),
-      .fifo_wr(fifo_wr),
-      .out(array_out)
+      .out(array_out),
+      .fifo_wr(fifo_wr)
   );
-
-  // Element-level sparsity controller (Step 6 B1)
-  // Inserted between mac_array and ofifo
-  sparsity_ctrl #(
-      .BW_PSUM(BW_PSUM),
-      .COL(COL)
-  ) sparsity_ctrl_instance (
-      .clk(clk),
-      .reset(reset),
-      .enable(enable_elem_sparsity),
-      .threshold_elem(threshold_elem),
-      .mac_out(array_out),
-      .gate_mask(gate_mask),
-      .gated_out(gated_array_out)
-  );
-
-  // Gate FIFO write signals with sparsity mask
-  logic [COL-1:0] fifo_wr_gated;
-  always_comb fifo_wr_gated = enable_elem_sparsity ? (fifo_wr & ~gate_mask) : fifo_wr;
 
   ofifo #(
       .BW (BW_PSUM),
       .COL(COL)
   ) ofifo_inst (
-      .reset(reset),
       .clk(clk),
-      .in(gated_array_out),
-      .wr(fifo_wr_gated),
+      .reset(reset),
+      .in(array_out),
+      .wr(fifo_wr),
       .rd(ofifo_rd),
-      .o_valid(fifo_valid),
+      .o_full(),
+      .o_valid(),
       .out(fifo_out)
   );
 
-  // SFP row - normalization module with MCP support
-  logic sfp_div_ready;
-
+  // sfp_row with external sum for dual-core normalization
   sfp_row #(
       .COL(COL),
-      .BW(BW),
-      .BW_PSUM(BW_PSUM)
-  ) sfp_instance (
+      .BW_PSUM(BW_PSUM),
+      .OBW(OBW)
+  ) sfp_row_inst (
       .clk(clk),
-      .reset(reset),
-      .acc(sfp_acc),
-      .div(sfp_div),
-      .fifo_ext_rd(fifo_ext_rd),
+      .rst_n(rst_n),
+      .start(sfp_start),
       .sum_in(sum_in),
-      .sfp_in(pmem_out),
-      .sfp_out(sfp_out),
       .sum_out(sum_out),
-      .div_ready(sfp_div_ready),
-      .enable_row_sparsity(enable_row_sparsity),
-      .threshold_row(threshold_row)
+      .row_in(pmem_out),
+      .row_out(sfp_out_raw),
+      .done(sfp_done)
   );
 
-  always_comb div_ready = sfp_div_ready;
-
-  // Gate pmem write during sfp_div mode:
-  // Only write when division result is ready (1 cycle after MCP capture)
-  // This allows the testbench to assert pmem_wr for the entire div phase
-  // while the core internally gates the actual write to the correct cycle.
-  logic sfp_div_ready_d;
-  always_ff @(posedge clk) begin
-    if (reset) sfp_div_ready_d <= 0;
-    else sfp_div_ready_d <= sfp_div_ready;
+  // Zero-extend OBW-bit sfp output to BW_PSUM bits
+  for (genvar i = 0; i < COL; i++) begin : g_sfp_ext
+    assign sfp_out[BW_PSUM*(i+1)-1 -: BW_PSUM] =
+        {{(BW_PSUM-OBW){1'b0}}, sfp_out_raw[OBW*(i+1)-1 -: OBW]};
   end
-
-  logic pmem_wr_effective;
-  always_comb pmem_wr_effective = sfp_div ? (pmem_wr && sfp_div_ready_d) : pmem_wr;
 
   sram_w16 #(
       .SRAM_BIT(PR * BW)
@@ -184,17 +167,11 @@ module core #(
       .CLK(clk),
       .D  (pmem_in),
       .Q  (pmem_out),
-      .CEN(!(pmem_rd || pmem_wr_effective)),
-      .WEN(!pmem_wr_effective),
+      .CEN(!(pmem_rd || pmem_wr)),
+      .WEN(!pmem_wr),
       .A  (pmem_add)
   );
 
-  // Expose pmem_out for verification
   always_comb out = pmem_out;
-
-  //////////// For printing purpose ////////////
-  always_ff @(posedge clk) begin
-    if (pmem_wr_effective) $display("Memory write to PSUM mem add %x %x ", pmem_add, pmem_in);
-  end
 
 endmodule

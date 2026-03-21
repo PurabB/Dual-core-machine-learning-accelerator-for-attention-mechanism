@@ -1,0 +1,1 @@
+restoreDesign [file dirname [file normalize [info script]]]/core_hier_pnr.enc.dat core_COL8_BW8_BW_PSUM20_PR8_OBW10

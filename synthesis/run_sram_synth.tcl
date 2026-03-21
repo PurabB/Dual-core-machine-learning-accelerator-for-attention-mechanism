@@ -11,10 +11,10 @@ set link_library   "* tcbn65gpluswc.db"
 set rtl_path "../verilog"
 
 #------------------------------------------------------
-# Synthesize sram_w16 with 128-bit width (qmem, kmem)
+# Synthesize sram_w16 with 64-bit width (qmem, kmem)
 #------------------------------------------------------
 analyze -format sverilog $rtl_path/sram_w16.sv
-elaborate sram_w16 -parameters "sram_bit=128"
+elaborate sram_w16 -parameters "SRAM_BIT=64"
 current_design sram_w16
 link
 uniquify
@@ -28,13 +28,13 @@ set_load 0.05 [all_outputs]
 
 compile_ultra
 
-report_timing > reports/sram_128b_timing.txt
-report_area   > reports/sram_128b_area.txt
-report_power  > reports/sram_128b_power.txt
+report_timing > reports/sram_64b_timing.txt
+report_area   > reports/sram_64b_area.txt
+report_power  > reports/sram_64b_power.txt
 
-write -format verilog -hierarchy -output outputs/sram_128b_w16_netlist.v
-write_sdc outputs/sram_128b_w16.sdc
-write -format ddc -hierarchy -output outputs/sram_128b_w16.ddc
+write -format verilog -hierarchy -output outputs/sram_64b_w16_netlist.v
+write_sdc outputs/sram_64b_w16.sdc
+write -format ddc -hierarchy -output outputs/sram_64b_w16.ddc
 
 #------------------------------------------------------
 # Synthesize sram_w16 with 160-bit width (pmem)
@@ -42,7 +42,7 @@ write -format ddc -hierarchy -output outputs/sram_128b_w16.ddc
 remove_design -all
 
 analyze -format sverilog $rtl_path/sram_w16.sv
-elaborate sram_w16 -parameters "sram_bit=160"
+elaborate sram_w16 -parameters "SRAM_BIT=160"
 current_design sram_w16
 link
 uniquify

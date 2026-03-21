@@ -31,7 +31,7 @@ def main():
     )
     parser.add_argument("--total_cycle", type=int, default=8, help="Number of Q rows")
     parser.add_argument("--col", type=int, default=8, help="Number of K columns")
-    parser.add_argument("--pr", type=int, default=16, help="Products per dot product")
+    parser.add_argument("--pr", type=int, default=8, help="Products per dot product")
     parser.add_argument("--bw", type=int, default=8, help="Bit width")
     args = parser.parse_args()
 

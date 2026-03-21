@@ -5,35 +5,41 @@
 #------------------------------------------------------
 
 set lef_path "/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/lef"
-set captbl_path "/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/captbl"
+
+# Helper: build pin list as a single braced string for editPin
+proc make_pin_cmd {base_opts prefix n} {
+    set cmd $base_opts
+    append cmd " -pin \{"
+    for {set i 0} {$i < $n} {incr i} {
+        append cmd " ${prefix}\[${i}\]"
+    }
+    append cmd " \}"
+    return $cmd
+}
 
 #======================================================
-# SRAM 128-bit PnR
+# SRAM 64-bit PnR (qmem, kmem)
 #======================================================
 
-set init_verilog "../synthesis/outputs/sram_128b_w16_netlist.v"
+set init_verilog "../synthesis/outputs/sram_64b_w16_netlist.v"
 set init_design_settop 1
-set init_top_cell sram_w16_sram_bit128
+set init_top_cell sram_w16_SRAM_BIT64
 set init_lef_file "$lef_path/tcbn65gplus_8lmT2.lef"
-set init_mmmc_file "mmmc_sram128.tcl"
+set init_mmmc_file "mmmc_sram64.tcl"
 
 init_design
 
-# Specify top metal layer = M4
 setMaxRouteLayer 4
 
-# Floorplan
-floorPlan -site core -r 1.0 0.7 5 5 5 5
+# 64 pins * 4um = 256um needed per side
+floorPlan -site core -d 280 280 5 5 5 5
 
-# Pin placement per spec: D on bottom, Q on top, rest on left, 4um pitch
-editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise \
-    -side Bottom -layer M3 -spreadType start -spacing 4.0 -pin {D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] D[9] D[10] D[11] D[12] D[13] D[14] D[15] D[16] D[17] D[18] D[19] D[20] D[21] D[22] D[23] D[24] D[25] D[26] D[27] D[28] D[29] D[30] D[31] D[32] D[33] D[34] D[35] D[36] D[37] D[38] D[39] D[40] D[41] D[42] D[43] D[44] D[45] D[46] D[47] D[48] D[49] D[50] D[51] D[52] D[53] D[54] D[55] D[56] D[57] D[58] D[59] D[60] D[61] D[62] D[63] D[64] D[65] D[66] D[67] D[68] D[69] D[70] D[71] D[72] D[73] D[74] D[75] D[76] D[77] D[78] D[79] D[80] D[81] D[82] D[83] D[84] D[85] D[86] D[87] D[88] D[89] D[90] D[91] D[92] D[93] D[94] D[95] D[96] D[97] D[98] D[99] D[100] D[101] D[102] D[103] D[104] D[105] D[106] D[107] D[108] D[109] D[110] D[111] D[112] D[113] D[114] D[115] D[116] D[117] D[118] D[119] D[120] D[121] D[122] D[123] D[124] D[125] D[126] D[127]}
+set base_d "editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise -side Bottom -layer M3 -spreadType center -spacing 4.0"
+set base_q "editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise -side Top -layer M3 -spreadType center -spacing 4.0"
 
-editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise \
-    -side Top -layer M3 -spreadType start -spacing 4.0 -pin {Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] Q[9] Q[10] Q[11] Q[12] Q[13] Q[14] Q[15] Q[16] Q[17] Q[18] Q[19] Q[20] Q[21] Q[22] Q[23] Q[24] Q[25] Q[26] Q[27] Q[28] Q[29] Q[30] Q[31] Q[32] Q[33] Q[34] Q[35] Q[36] Q[37] Q[38] Q[39] Q[40] Q[41] Q[42] Q[43] Q[44] Q[45] Q[46] Q[47] Q[48] Q[49] Q[50] Q[51] Q[52] Q[53] Q[54] Q[55] Q[56] Q[57] Q[58] Q[59] Q[60] Q[61] Q[62] Q[63] Q[64] Q[65] Q[66] Q[67] Q[68] Q[69] Q[70] Q[71] Q[72] Q[73] Q[74] Q[75] Q[76] Q[77] Q[78] Q[79] Q[80] Q[81] Q[82] Q[83] Q[84] Q[85] Q[86] Q[87] Q[88] Q[89] Q[90] Q[91] Q[92] Q[93] Q[94] Q[95] Q[96] Q[97] Q[98] Q[99] Q[100] Q[101] Q[102] Q[103] Q[104] Q[105] Q[106] Q[107] Q[108] Q[109] Q[110] Q[111] Q[112] Q[113] Q[114] Q[115] Q[116] Q[117] Q[118] Q[119] Q[120] Q[121] Q[122] Q[123] Q[124] Q[125] Q[126] Q[127]}
-
-editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise \
-    -side Left -layer M4 -spreadType start -spacing 4.0 -pin {CLK CEN WEN A[0] A[1] A[2] A[3]}
+eval [make_pin_cmd $base_d D 64]
+eval [make_pin_cmd $base_q Q 64]
+editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise -side Left -layer M4 -spreadType center -spacing 4.0 -pin {CLK CEN WEN A[0] A[1] A[2] A[3]}
 
 # Power planning
 addRing -type core_rings -nets {VDD VSS} \
@@ -48,7 +54,6 @@ globalNetConnect VDD -type pgpin -pin VDD -all
 globalNetConnect VSS -type pgpin -pin VSS -all
 sroute -connect {blockPin padPin padRing corePin} -nets {VDD VSS}
 
-# Place, CTS, Route
 placeDesign
 optDesign -preCTS
 ccopt_design
@@ -58,31 +63,26 @@ routeDesign
 setAnalysisMode -analysisType onChipVariation
 optDesign -postRoute
 
-# Reports
-report_timing > reports/sram_128b_timing.txt
-report_power  > reports/sram_128b_power.txt
-report_area   > reports/sram_128b_area.txt
+report_timing > reports/sram_64b_timing.txt
+report_power  > reports/sram_64b_power.txt
+report_area   > reports/sram_64b_area.txt
 
-# Save
-saveDesign sram_128b_pnr.enc
+saveDesign sram_64b_pnr.enc
 
-# Write out LEF for hierarchical use
-write_lef_abstract sram_128b_w16.lef -specifyTopLayer 4 -stripePin -PGpinLayers {M3 M4}
+write_lef_abstract sram_64b_w16.lef -specifyTopLayer 4 -stripePin -PGpinLayers {M3 M4}
+# do_extract_model requires ETS license, skip for now
 
-# Write timing model for synthesis
-do_extract_model sram_128b_w16_model.lib
-
-puts "===== SRAM 128b PnR Complete ====="
+puts "===== SRAM 64b PnR Complete ====="
 
 #======================================================
-# SRAM 160-bit PnR
+# SRAM 160-bit PnR (pmem)
 #======================================================
 
 freeDesign
 
 set init_verilog "../synthesis/outputs/sram_160b_w16_netlist.v"
 set init_design_settop 1
-set init_top_cell sram_w16_sram_bit160
+set init_top_cell sram_w16_SRAM_BIT160
 set init_lef_file "$lef_path/tcbn65gplus_8lmT2.lef"
 set init_mmmc_file "mmmc_sram160.tcl"
 
@@ -90,17 +90,15 @@ init_design
 
 setMaxRouteLayer 4
 
-floorPlan -site core -r 1.0 0.7 5 5 5 5
+# 160 pins * 4um = 640um needed per side
+floorPlan -site core -d 680 680 5 5 5 5
 
-# Pin placement: D on bottom, Q on top, rest on left, 4um pitch
-editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise \
-    -side Bottom -layer M3 -spreadType start -spacing 4.0 -pin {D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] D[9] D[10] D[11] D[12] D[13] D[14] D[15] D[16] D[17] D[18] D[19] D[20] D[21] D[22] D[23] D[24] D[25] D[26] D[27] D[28] D[29] D[30] D[31] D[32] D[33] D[34] D[35] D[36] D[37] D[38] D[39] D[40] D[41] D[42] D[43] D[44] D[45] D[46] D[47] D[48] D[49] D[50] D[51] D[52] D[53] D[54] D[55] D[56] D[57] D[58] D[59] D[60] D[61] D[62] D[63] D[64] D[65] D[66] D[67] D[68] D[69] D[70] D[71] D[72] D[73] D[74] D[75] D[76] D[77] D[78] D[79] D[80] D[81] D[82] D[83] D[84] D[85] D[86] D[87] D[88] D[89] D[90] D[91] D[92] D[93] D[94] D[95] D[96] D[97] D[98] D[99] D[100] D[101] D[102] D[103] D[104] D[105] D[106] D[107] D[108] D[109] D[110] D[111] D[112] D[113] D[114] D[115] D[116] D[117] D[118] D[119] D[120] D[121] D[122] D[123] D[124] D[125] D[126] D[127] D[128] D[129] D[130] D[131] D[132] D[133] D[134] D[135] D[136] D[137] D[138] D[139] D[140] D[141] D[142] D[143] D[144] D[145] D[146] D[147] D[148] D[149] D[150] D[151] D[152] D[153] D[154] D[155] D[156] D[157] D[158] D[159]}
+set base_d "editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise -side Bottom -layer M3 -spreadType center -spacing 4.0"
+set base_q "editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise -side Top -layer M3 -spreadType center -spacing 4.0"
 
-editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise \
-    -side Top -layer M3 -spreadType start -spacing 4.0 -pin {Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] Q[9] Q[10] Q[11] Q[12] Q[13] Q[14] Q[15] Q[16] Q[17] Q[18] Q[19] Q[20] Q[21] Q[22] Q[23] Q[24] Q[25] Q[26] Q[27] Q[28] Q[29] Q[30] Q[31] Q[32] Q[33] Q[34] Q[35] Q[36] Q[37] Q[38] Q[39] Q[40] Q[41] Q[42] Q[43] Q[44] Q[45] Q[46] Q[47] Q[48] Q[49] Q[50] Q[51] Q[52] Q[53] Q[54] Q[55] Q[56] Q[57] Q[58] Q[59] Q[60] Q[61] Q[62] Q[63] Q[64] Q[65] Q[66] Q[67] Q[68] Q[69] Q[70] Q[71] Q[72] Q[73] Q[74] Q[75] Q[76] Q[77] Q[78] Q[79] Q[80] Q[81] Q[82] Q[83] Q[84] Q[85] Q[86] Q[87] Q[88] Q[89] Q[90] Q[91] Q[92] Q[93] Q[94] Q[95] Q[96] Q[97] Q[98] Q[99] Q[100] Q[101] Q[102] Q[103] Q[104] Q[105] Q[106] Q[107] Q[108] Q[109] Q[110] Q[111] Q[112] Q[113] Q[114] Q[115] Q[116] Q[117] Q[118] Q[119] Q[120] Q[121] Q[122] Q[123] Q[124] Q[125] Q[126] Q[127] Q[128] Q[129] Q[130] Q[131] Q[132] Q[133] Q[134] Q[135] Q[136] Q[137] Q[138] Q[139] Q[140] Q[141] Q[142] Q[143] Q[144] Q[145] Q[146] Q[147] Q[148] Q[149] Q[150] Q[151] Q[152] Q[153] Q[154] Q[155] Q[156] Q[157] Q[158] Q[159]}
-
-editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise \
-    -side Left -layer M4 -spreadType start -spacing 4.0 -pin {CLK CEN WEN A[0] A[1] A[2] A[3]}
+eval [make_pin_cmd $base_d D 160]
+eval [make_pin_cmd $base_q Q 160]
+editPin -pinWidth 0.1 -pinDepth 0.4 -fixOverlap 1 -unit MICRON -spreadDirection clockwise -side Left -layer M4 -spreadType center -spacing 4.0 -pin {CLK CEN WEN A[0] A[1] A[2] A[3]}
 
 addRing -type core_rings -nets {VDD VSS} \
     -layer {top M4 bottom M4 left M3 right M3} \
@@ -130,9 +128,7 @@ report_area   > reports/sram_160b_area.txt
 saveDesign sram_160b_pnr.enc
 
 write_lef_abstract sram_160b_w16.lef -specifyTopLayer 4 -stripePin -PGpinLayers {M3 M4}
-
-# Write timing model for synthesis
-do_extract_model sram_160b_w16_model.lib
+# do_extract_model requires ETS license, skip for now
 
 puts "===== SRAM 160b PnR Complete ====="
 exit

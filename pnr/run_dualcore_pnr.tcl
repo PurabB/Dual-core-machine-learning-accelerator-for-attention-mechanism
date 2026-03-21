@@ -8,8 +8,12 @@ set lef_path "/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/lef"
 #--- Import Design ---
 set init_verilog "../synthesis/outputs/fullchip_netlist.v"
 set init_design_settop 1
-set init_top_cell fullchip_col8_bw8_bw_psum20_pr16
-set init_lef_file "$lef_path/tcbn65gplus_8lmT2.lef"
+set init_top_cell fullchip_COL8_BW8_BW_PSUM20_PR16
+set init_lef_file [list \
+    $lef_path/tcbn65gplus_8lmT2.lef \
+    sram_64b_w16.lef \
+    sram_160b_w16.lef \
+]
 set init_mmmc_file "mmmc_dualcore.tcl"
 
 init_design
@@ -40,6 +44,7 @@ placeDesign
 optDesign -preCTS
 
 #--- CTS ---
+create_ccopt_clock_tree_spec
 ccopt_design
 
 #--- Post-CTS ---
