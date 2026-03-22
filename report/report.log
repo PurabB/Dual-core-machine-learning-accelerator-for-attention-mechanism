@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  21 MAR 2026 21:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  21 MAR 2026 23:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -559,80 +559,83 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--107
 File: ../imgs/Step1_pnr.png Graphic file (type png)
 <use ../imgs/Step1_pnr.png>
 Package pdftex.def Info: ../imgs/Step1_pnr.png  used on input line 111.
-(pdftex.def)             Requested size: 107.32153pt x 104.74078pt.
-<../imgs/Step2_vcd.png, id=50, 438.63875pt x 176.66pt>
+(pdftex.def)             Requested size: 117.07635pt x 114.26097pt.
+<../imgs/Step1_vcd.png, id=50, 434.62375pt x 234.8775pt>
+File: ../imgs/Step1_vcd.png Graphic file (type png)
+<use ../imgs/Step1_vcd.png>
+Package pdftex.def Info: ../imgs/Step1_vcd.png  used on input line 116.
+(pdftex.def)             Requested size: 117.07635pt x 63.26724pt.
+<../imgs/Step2_vcd.png, id=51, 438.63875pt x 176.66pt>
 File: ../imgs/Step2_vcd.png Graphic file (type png)
 <use ../imgs/Step2_vcd.png>
-Package pdftex.def Info: ../imgs/Step2_vcd.png  used on input line 116.
-(pdftex.def)             Requested size: 126.83488pt x 51.08182pt.
+Package pdftex.def Info: ../imgs/Step2_vcd.png  used on input line 121.
+(pdftex.def)             Requested size: 234.15643pt x 94.30594pt.
+[1{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updm
+ap/pdftex.map}
 
-Underfull \hbox (badness 1558) in paragraph at lines 136--138
+
+{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/cm-supe
+r/cm-super-ts1.enc} <../imgs/Step1_pnr.png> <../imgs/Step1_vcd.png> <../imgs/St
+ep2_vcd.png>]
+Underfull \hbox (badness 1558) in paragraph at lines 141--143
 []\OT1/cmr/m/n/10 Result: \OT1/cmr/bx/n/10 WNS = +0.103ns\OT1/cmr/m/n/10 , 45,9
 72 in-stances,
  []
 
-<../imgs/Step3_PnR.png, id=51, 693.59125pt x 671.50874pt>
+<../imgs/Step3_PnR.png, id=77, 693.59125pt x 671.50874pt>
 File: ../imgs/Step3_PnR.png Graphic file (type png)
 <use ../imgs/Step3_PnR.png>
-Package pdftex.def Info: ../imgs/Step3_PnR.png  used on input line 142.
+Package pdftex.def Info: ../imgs/Step3_PnR.png  used on input line 147.
 (pdftex.def)             Requested size: 107.32153pt x 103.89835pt.
-<../imgs/Step3_vcd.png, id=52, 1727.45375pt x 1017.8025pt>
+<../imgs/Step3_vcd.png, id=78, 1727.45375pt x 1017.8025pt>
 File: ../imgs/Step3_vcd.png Graphic file (type png)
 <use ../imgs/Step3_vcd.png>
-Package pdftex.def Info: ../imgs/Step3_vcd.png  used on input line 147.
+Package pdftex.def Info: ../imgs/Step3_vcd.png  used on input line 152.
 (pdftex.def)             Requested size: 126.83488pt x 74.71672pt.
-
-Underfull \vbox (badness 5302) has occurred while \output is active []
-
- [1{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/upd
-map/pdftex.map}
-
-
-{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/cm-supe
-r/cm-super-ts1.enc} <../imgs/Step1_pnr.png> <../imgs/Step2_vcd.png>]
 <../imgs/Step4_PnR.png, id=79, 660.4675pt x 655.44875pt>
 File: ../imgs/Step4_PnR.png Graphic file (type png)
 <use ../imgs/Step4_PnR.png>
-Package pdftex.def Info: ../imgs/Step4_PnR.png  used on input line 180.
+Package pdftex.def Info: ../imgs/Step4_PnR.png  used on input line 185.
 (pdftex.def)             Requested size: 107.32153pt x 106.50415pt.
 <../imgs/Step4_Sim.png, id=80, 1467.4825pt x 1088.065pt>
 File: ../imgs/Step4_Sim.png Graphic file (type png)
 <use ../imgs/Step4_Sim.png>
-Package pdftex.def Info: ../imgs/Step4_Sim.png  used on input line 185.
+Package pdftex.def Info: ../imgs/Step4_Sim.png  used on input line 190.
 (pdftex.def)             Requested size: 126.83488pt x 94.03664pt.
 
-Underfull \hbox (badness 1584) in paragraph at lines 193--193
+Underfull \hbox (badness 1584) in paragraph at lines 198--198
 |[]\OT1/cmr/bx/n/12 Pipelined Mul-ti-plier Op-ti-miza-tion
  []
 
 <../imgs/Step5_vcd.png, id=81, 1467.4825pt x 1088.065pt>
 File: ../imgs/Step5_vcd.png Graphic file (type png)
 <use ../imgs/Step5_vcd.png>
-Package pdftex.def Info: ../imgs/Step5_vcd.png  used on input line 214.
+Package pdftex.def Info: ../imgs/Step5_vcd.png  used on input line 219.
 (pdftex.def)             Requested size: 243.91125pt x 180.83458pt.
 
-Underfull \hbox (badness 2237) in paragraph at lines 220--220
+Underfull \hbox (badness 2237) in paragraph at lines 225--225
 |[]\OT1/cmr/bx/n/12 Two-Stage Mul-ti-plier & Spar-sity
  []
 
-<../imgs/Step6_PnR.png, id=82, 782.925pt x 780.9175pt>
-File: ../imgs/Step6_PnR.png Graphic file (type png)
-<use ../imgs/Step6_PnR.png>
-Package pdftex.def Info: ../imgs/Step6_PnR.png  used on input line 260.
-(pdftex.def)             Requested size: 107.32153pt x 107.03986pt.
-<../imgs/Step6_vcd.png, id=83, 1467.4825pt x 1088.065pt>
-File: ../imgs/Step6_vcd.png Graphic file (type png)
-<use ../imgs/Step6_vcd.png>
-Package pdftex.def Info: ../imgs/Step6_vcd.png  used on input line 265.
-(pdftex.def)             Requested size: 126.83488pt x 94.03664pt.
 [2 <../imgs/Step3_PnR.png> <../imgs/Step3_vcd.png> <../imgs/Step4_PnR.png> <../
 imgs/Step4_Sim.png> <../imgs/Step5_vcd.png>]
-Overfull \hbox (0.59032pt too wide) in paragraph at lines 324--338
+<../imgs/Step6_PnR.png, id=99, 782.925pt x 780.9175pt>
+File: ../imgs/Step6_PnR.png Graphic file (type png)
+<use ../imgs/Step6_PnR.png>
+Package pdftex.def Info: ../imgs/Step6_PnR.png  used on input line 265.
+(pdftex.def)             Requested size: 107.32153pt x 107.03986pt.
+<../imgs/Step6_vcd.png, id=100, 1467.4825pt x 1088.065pt>
+File: ../imgs/Step6_vcd.png Graphic file (type png)
+<use ../imgs/Step6_vcd.png>
+Package pdftex.def Info: ../imgs/Step6_vcd.png  used on input line 270.
+(pdftex.def)             Requested size: 126.83488pt x 94.03664pt.
+
+Overfull \hbox (0.59032pt too wide) in paragraph at lines 329--343
  [][] 
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 361--365
+Underfull \hbox (badness 1668) in paragraph at lines 366--370
 \OT1/cmr/m/n/10 scal-a-bil-ity (hi-er-ar-chi-cal de-sign), demon-strat-ing how
  []
 
@@ -641,14 +644,18 @@ Underfull \hbox (badness 1668) in paragraph at lines 361--365
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 25121E4E0D2A850844FCDFBD145F4C8B;2065.
  ) 
 Here is how much of TeX's memory you used:
- 13089 strings out of 467525
- 207456 string characters out of 5408440
- 649606 words of memory out of 5000000
- 41815 multiletter control sequences out of 15000+600000
+ 13098 strings out of 467525
+ 207689 string characters out of 5408440
+ 647613 words of memory out of 5000000
+ 41824 multiletter control sequences out of 15000+600000
  639237 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,83p,331b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -680,10 +687,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></opt/homebrew/Cellar/texlive/
 20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></opt/homebr
 ew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/cm-super/sfrm100
 0.pfb>
-Output written on report.pdf (3 pages, 8218379 bytes).
+Output written on report.pdf (3 pages, 8319385 bytes).
 PDF statistics:
- 214 PDF objects out of 1000 (max. 8388607)
+ 216 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams
  27 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

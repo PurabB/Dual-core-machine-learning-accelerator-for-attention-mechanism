@@ -22,7 +22,7 @@
 \title{\vspace{-1.8em}\textbf{Dual-Core Machine Learning Accelerator
 for Attention Mechanism}\vspace{-0.8em}}
 \author{Yufan Wang, Purab Balani, Jasmine Le, Dennis Zang\\
-ECE 260B --- Winter 2026, UCSD}
+The Best ECE260B Group -- Winter UCSD}
 \date{}
 
 \begin{document}
@@ -107,17 +107,22 @@ $[Q_i K_0,\; Q_i K_1,\; \ldots,\; Q_i K_7]$.
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{0.44\linewidth}
+  \begin{subfigure}{0.48\linewidth}
     \includegraphics[width=\linewidth]{Step1_pnr.png}
     \caption{Step 1 flat PnR layout}
   \end{subfigure}
   \hfill
-  \begin{subfigure}{0.52\linewidth}
+  \begin{subfigure}{0.48\linewidth}
+    \includegraphics[width=\linewidth]{Step1_vcd.png}
+    \caption{Step 1 MAC output VCD}
+  \end{subfigure}
+  \\[4pt]
+  \begin{subfigure}{0.96\linewidth}
     \includegraphics[width=\linewidth]{Step2_vcd.png}
     \caption{Step 2 normalization VCD}
   \end{subfigure}
-  \caption{Steps 1--2: single-core layout and normalization
-    verification. Output matches expected $Q \times K$ products.}
+  \caption{Steps 1--2: PnR layout, MAC functional verification,
+    and normalization output matching expected results.}
   \label{fig:step12}
 \end{figure}
 
