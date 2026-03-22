@@ -1,0 +1,12 @@
+Vfullchip_tb___024root__Slow.o: \
+  /Users/downeyflyfan/Course/ECE_260B/Dual-core-machine-learning-accelerator-for-attention-mechanism/obj_dir/Vfullchip_tb__pch.h \
+  /opt/homebrew/Cellar/verilator/5.042/share/verilator/include/verilated.h \
+  /opt/homebrew/Cellar/verilator/5.042/share/verilator/include/verilated_config.h \
+  /opt/homebrew/Cellar/verilator/5.042/share/verilator/include/verilatedos.h \
+  /opt/homebrew/Cellar/verilator/5.042/share/verilator/include/verilated_types.h \
+  /opt/homebrew/Cellar/verilator/5.042/share/verilator/include/verilated_funcs.h \
+  /Users/downeyflyfan/Course/ECE_260B/Dual-core-machine-learning-accelerator-for-attention-mechanism/obj_dir/Vfullchip_tb__Syms.h \
+  /Users/downeyflyfan/Course/ECE_260B/Dual-core-machine-learning-accelerator-for-attention-mechanism/obj_dir/Vfullchip_tb.h \
+  /Users/downeyflyfan/Course/ECE_260B/Dual-core-machine-learning-accelerator-for-attention-mechanism/obj_dir/Vfullchip_tb___024root.h \
+  /opt/homebrew/Cellar/verilator/5.042/share/verilator/include/verilated_timing.h \
+  Vfullchip_tb___024root__Slow.cpp Vfullchip_tb__pch.h

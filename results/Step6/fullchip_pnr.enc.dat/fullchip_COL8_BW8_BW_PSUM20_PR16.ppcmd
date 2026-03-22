@@ -1,0 +1,42 @@
+# PPCMD 1 
+# sroute -connect {blockPin padPin padRing corePin} -nets {VDD VSS}
+# 3 
+# 16 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 1 
+
+# PPCMD 2 
+# addStripe -nets {VDD VSS} -layer M7 -direction vertical -width 1.0 -spacing 0.5 -set_to_set_distance 25
+# 2 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 2 
+
+# PPCMD 3 
+# addRing -type core_rings -nets {VDD VSS} -layer {top M8 bottom M8 left M7 right M7} -width 1.2 -spacing 0.5 -offset 3.0 -layer_top M8 -layer_bottom M8 -layer_left M7 -layer_right M7 -width_top {1.2} -width_bottom {1.2} -width_left {1.2} -width_right {1.2} -spacing_top {0.5} -spacing_bottom {0.5} -spacing_left {0.5} -spacing_right {0.5} -offset_top {3.0} -offset_bottom {3.0} -offset_left {3.0} -offset_right {3.0} -stacked_via_top_layer topLayer -stacked_via_bottom_layer bottomLayer
+# 1 
+# 32 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 3 
+

@@ -1,0 +1,227 @@
+ERROR: ld.so: object '/usr/lib64/libssl.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib64/libcrypto.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+TOOL:	xrun	20.09-s017: Started on Mar 20, 2026 at 22:55:19 PDT
+xrun: 20.09-s017: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+ERROR: ld.so: object '/usr/lib64/libssl.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib64/libcrypto.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+file: gate_level_tb.sv
+	module worklib.gate_level_tb:sv
+		errors: 0, warnings: 0
+ERROR: ld.so: object '/usr/lib64/libssl.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib64/libcrypto.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+  DFCSND1 \g_col[2].mac_col_inst/mac_inst/stage_data_reg[0][5][15]  ( .D(
+                                                                  |
+xmelab: *W,CUVWSP (../synthesis/outputs/core_hier_netlist.v,14737|66): 1 output port was not connected:
+xmelab: (/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/verilog/tcbn65gplus.v,5182): Q
+
+  FA1D1 U1214 ( .A(n1781), .B(n1780), .CI(n1779), .S(n1283) );
+            |
+xmelab: *W,CUVWSP (../synthesis/outputs/core_hier_netlist.v,16324|12): 1 output port was not connected:
+xmelab: (/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/verilog/tcbn65gplus.v,9795): CO
+
+  FA1D0 U7693 ( .A(n12514), .B(n12513), .CI(n12512), .S(n1325) );
+            |
+xmelab: *W,CUVWSP (../synthesis/outputs/core_hier_netlist.v,25863|12): 1 output port was not connected:
+xmelab: (/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/verilog/tcbn65gplus.v,9754): CO
+
+  FA1D0 U11093 ( .A(n6154), .B(n6153), .CI(n6152), .S(n6151) );
+             |
+xmelab: *W,CUVWSP (../synthesis/outputs/core_hier_netlist.v,30353|13): 1 output port was not connected:
+xmelab: (/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/verilog/tcbn65gplus.v,9754): CO
+
+  ofifo_COL8_BW20 ofifo_inst ( .clk(clk), .reset(n272), .rd(inst[16]), .wr(
+                           |
+xmelab: *W,CUVWSP (../synthesis/outputs/core_hier_netlist.v,86593|27): 2 output ports were not connected:
+xmelab: (../synthesis/outputs/core_hier_netlist.v,45365): o_full
+xmelab: (../synthesis/outputs/core_hier_netlist.v,45365): o_valid
+
+  DFD1 \memory_reg[14][146]  ( .D(n2130), .CP(CLK), .Q(\memory[14][146] ) );
+                           |
+xmelab: *W,CUVWSP (../synthesis/outputs/core_hier_netlist.v,71815|27): 1 output port was not connected:
+xmelab: (/home/linux/ieng6/ECE260B_WI26_A00/public/PDKdata/verilog/tcbn65gplus.v,5821): QN
+
+	Top level design units:
+		gate_level_tb
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+ERROR: ld.so: object '/usr/lib64/libssl.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib64/libcrypto.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+		worklib.MUX2ND0:v <0x12e82230>
+			streams:   0, words:     0
+		worklib.FCICOND1:v <0x6e05228c>
+			streams:   0, words:     0
+		worklib.CKMUX2D1:v <0x70e48ece>
+			streams:   0, words:     0
+		worklib.MUX2D0:v <0x4f6372e9>
+			streams:   0, words:     0
+		worklib.DFCNQD2:v <0x35439dda>
+			streams:   0, words:     0
+		worklib.DFCNQD4:v <0x7f0aa388>
+			streams:   0, words:     0
+		worklib.CKMUX2D0:v <0x406a0a5d>
+			streams:   0, words:     0
+		worklib.CKMUX2D1:v <0x3bd87bfa>
+			streams:   0, words:     0
+		worklib.DFD1:v <0x65592697>
+			streams:   0, words:     0
+		worklib.DFKCNQD4:v <0x7feddeed>
+			streams:   0, words:     0
+		worklib.DFQD2:v <0x2cf4c772>
+			streams:   0, words:     0
+		worklib.DFQD1:v <0x690478f1>
+			streams:   0, words:     0
+		worklib.DFQD4:v <0x11dc3d14>
+			streams:   0, words:     0
+		worklib.MUX2ND0:v <0x59d4d704>
+			streams:   0, words:     0
+		worklib.FICOND1:v <0x1d6ab502>
+			streams:   0, words:     0
+		worklib.FA1D0:v <0x4f400a3b>
+			streams:   0, words:     0
+		worklib.MUX2D0:v <0x045f87dd>
+			streams:   0, words:     0
+		worklib.CKXOR2D0:v <0x2c0d6f73>
+			streams:   0, words:     0
+		worklib.XOR2D0:v <0x2ab067ba>
+			streams:   0, words:     0
+		worklib.XOR2D0:v <0x16593110>
+			streams:   0, words:     0
+		worklib.XOR3D2:v <0x6e9592c6>
+			streams:   0, words:     0
+		worklib.XNR2D1:v <0x2548c78f>
+			streams:   0, words:     0
+		worklib.CKXOR2D0:v <0x10e439d9>
+			streams:   0, words:     0
+		worklib.CKXOR2D1:v <0x10f348ab>
+			streams:   0, words:     0
+		worklib.XNR2D0:v <0x6b5430bd>
+			streams:   0, words:     0
+		worklib.XNR2D4:v <0x34bfbc9c>
+			streams:   0, words:     0
+		worklib.XNR2D0:v <0x57bd6617>
+			streams:   0, words:     0
+		worklib.XNR3D2:v <0x761baf5f>
+			streams:   0, words:     0
+		worklib.HA1D1:v <0x68820827>
+			streams:   0, words:     0
+		worklib.XNR2D1:v <0x19a19125>
+			streams:   0, words:     0
+		worklib.XOR2D2:v <0x67d85c55>
+			streams:   0, words:     0
+		worklib.CKXOR2D1:v <0x2c1a1e01>
+			streams:   0, words:     0
+		worklib.XOR3D1:v <0x00f0caae>
+			streams:   0, words:     0
+		worklib.HA1D0:v <0x55321f5d>
+			streams:   0, words:     0
+		worklib.FA1D0:v <0x42cbcc82>
+			streams:   0, words:     0
+		worklib.FA1D1:v <0x586e82d5>
+			streams:   0, words:     0
+		worklib.EDFQD2:v <0x06783920>
+			streams:   0, words:     0
+		worklib.DFQD2:v <0x47d0cb85>
+			streams:   0, words:     0
+		worklib.DFQD4:v <0x7af831e3>
+			streams:   0, words:     0
+		worklib.DFCSND1:v <0x0e8e0df6>
+			streams:   1, words:  2226
+		worklib.DFCSNQD1:v <0x4e97c1f6>
+			streams:   1, words:  2226
+		worklib.DFSND1:v <0x65ae0f01>
+			streams:   0, words:     0
+		worklib.EDFQD4:v <0x0e063bd7>
+			streams:   0, words:     0
+		worklib.DFQD1:v <0x02207406>
+			streams:   0, words:     0
+		worklib.DFSNQD1:v <0x2e450268>
+			streams:   0, words:     0
+		worklib.EDFQD1:v <0x749b79cb>
+			streams:   0, words:     0
+		worklib.EDFQD4:v <0x453acee3>
+			streams:   0, words:     0
+		worklib.EDFQD2:v <0x4d44cc14>
+			streams:   0, words:     0
+		worklib.EDFQD1:v <0x3fa78cff>
+			streams:   0, words:     0
+		worklib.DFCNQD1:v <0x7ddf81d3>
+			streams:   0, words:     0
+		worklib.DFCNQD1:v <0x36e374e7>
+			streams:   0, words:     0
+		worklib.core_COL8_BW8_BW_PSUM20_PR8_OBW10:v <0x3245c732>
+			streams:   0, words:     0
+		worklib.gate_level_tb:sv <0x347c2b60>
+			streams:  23, words: 46898
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                    Instances  Unique
+		Modules:                52476     189
+		UDPs:                   15987       3
+		Primitives:            109601       9
+		Timing outputs:         53718     206
+		Registers:              11347      52
+		Scalar wires:           67783       -
+		Expanded wires:           243       3
+		Always blocks:              4       3
+		Initial blocks:            16      16
+		Pseudo assignments:         6       6
+		Timing checks:          78186       2
+		Simulation timescale:     1ps
+	Writing initial simulation snapshot: worklib.gate_level_tb:sv
+ERROR: ld.so: object '/usr/lib64/libssl.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+ERROR: ld.so: object '/usr/lib64/libcrypto.so.1.0.2k' from LD_PRELOAD cannot be preloaded: ignored.
+Loading snapshot worklib.gate_level_tb:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /software/ECE/XCELIUM-2009/tools/xcelium/files/xmsimrc
+xcelium> run
+##### Q data reading #####
+##### K data reading #####
+##### Expected multiplication result #####
+prd @cycle 0: 0005dfffecffff90005efffd0fffd3fffc1fffaa
+prd @cycle 1: 00034fffebfffb700018ffffbfffdffffd7fffe9
+prd @cycle 2: 000260001b000320003ffffe400015ffffdfffc9
+prd @cycle 3: 00021fffb6000110007dfffdbfffeffffe5fffcd
+prd @cycle 4: 00050ffff6ffff60000dfff76fffdbfffa6fffc8
+prd @cycle 5: 0002a000010001a000440000700007ffff8fffd3
+prd @cycle 6: fffed0003000063ffff9fffff000170002efffec
+prd @cycle 7: fffc10002900080fffd2fffff0004e0004a00025
+##### Qmem writing #####
+##### Kmem writing #####
+##### K loading to processor #####
+##### Execute #####
+##### Move OFIFO to PMEM #####
+##### Read results from PMEM #####
+HW prd @cycle 0: 0005dxxxXxxxxxx0005exxxxXfffd3xxxXXfffaa
+HW prd @cycle 1: 00034xxxxxxxxxx00018xxxxxfffdfxxxxxfffe9
+HW prd @cycle 2: 00026xxxxxxxxxx0003fxxxxx00015xxxxxfffc9
+HW prd @cycle 3: 00021xxxxxxxxxx0007dxxxxxfffefxxxxxfffcd
+HW prd @cycle 4: 00050xxxxxxxxxx0000dxxxxxfffdbxxxxxfffc8
+HW prd @cycle 5: 0002axxxxxxxxxx00044xxxxx00007xxxxxfffd3
+HW prd @cycle 6: fffedxxxxxxxxxxffff9xxxxx00017xxxxxfffec
+HW prd @cycle 7: fffc1xxxxxxxxxxfffd2xxxxx0004exxxxx00025
+##### SFP Row Normalization #####
+sfp_row normalized row 0 (done)
+sfp_row normalized row 1 (done)
+sfp_row normalized row 2 (done)
+sfp_row normalized row 3 (done)
+sfp_row normalized row 4 (done)
+sfp_row normalized row 5 (done)
+sfp_row normalized row 6 (done)
+sfp_row normalized row 7 (done)
+##### Read Normalized Results #####
+norm @row 0: 0000X0000X0000X0000X0000X0000X0000X0000X
+norm @row 1: 000Xx000Xx000Xx000Xx000Xx000Xx000Xx000Xx
+norm @row 2: 00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx
+norm @row 3: 00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx
+norm @row 4: 00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx
+norm @row 5: 00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx
+norm @row 6: 00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx
+norm @row 7: 00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx00Xxx
+Simulation complete via $finish(1) at time 184 NS + 0
+./gate_level_tb.sv:235     #10 $finish;
+xcelium> exit
+TOOL:	xrun	20.09-s017: Exiting on Mar 20, 2026 at 22:55:27 PDT  (total: 00:00:08)

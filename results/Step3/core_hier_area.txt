@@ -1,0 +1,7 @@
+Depth  Name                                 #Inst  Area (um^2)
+--------------------------------------------------------------
+0      core_COL8_BW8_BW_PSUM20_PR8_OBW10    45972  632211.64  
+1      kmem_instance                        2993   12965.04   
+1      ofifo_inst                           7979   32023.8    
+1      qmem_instance                        3019   12861.0    
+1      mac_array_instance                   26371  94564.44   

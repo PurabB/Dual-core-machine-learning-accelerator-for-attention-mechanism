@@ -1,0 +1,1 @@
+restoreDesign [file dirname [file normalize [info script]]]/fullchip_pnr.enc.dat fullchip_COL8_BW8_BW_PSUM20_PR16

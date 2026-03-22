@@ -1,0 +1,57 @@
+VERIFY_CONNECTIVITY use new engine.
+
+******** Start: VERIFY CONNECTIVITY ********
+Start Time: Sat Mar 21 15:26:15 2026
+
+Design Name: fullchip_COL8_BW8_BW_PSUM20_PR16
+Database Units: 2000
+Design Boundary: (0.0000, 0.0000) (1155.8000, 1152.4000)
+Error Limit = 1000; Warning Limit = 50
+Check all nets
+**** 15:26:16 **** Processed 5000 nets.
+**** 15:26:17 **** Processed 10000 nets.
+**** 15:26:17 **** Processed 15000 nets.
+**** 15:26:17 **** Processed 20000 nets.
+**** 15:26:18 **** Processed 25000 nets.
+**** 15:26:18 **** Processed 30000 nets.
+**** 15:26:18 **** Processed 35000 nets.
+**** 15:26:18 **** Processed 40000 nets.
+**** 15:26:18 **** Processed 45000 nets.
+**** 15:26:18 **** Processed 50000 nets.
+**** 15:26:19 **** Processed 55000 nets.
+**** 15:26:19 **** Processed 60000 nets.
+**** 15:26:19 **** Processed 65000 nets.
+**** 15:26:19 **** Processed 70000 nets.
+**** 15:26:19 **** Processed 75000 nets.
+**** 15:26:19 **** Processed 80000 nets.
+**** 15:26:19 **** Processed 85000 nets.
+**** 15:26:19 **** Processed 90000 nets.
+**** 15:26:19 **** Processed 95000 nets.
+**** 15:26:20 **** Processed 100000 nets.
+**** 15:26:20 **** Processed 105000 nets.
+**** 15:26:20 **** Processed 110000 nets.
+**** 15:26:20 **** Processed 115000 nets.
+**** 15:26:20 **** Processed 120000 nets.
+**** 15:26:20 **** Processed 125000 nets.
+**** 15:26:20 **** Processed 130000 nets.
+**** 15:26:21 **** Processed 135000 nets.
+**** 15:26:21 **** Processed 140000 nets.
+**** 15:26:21 **** Processed 145000 nets.
+**** 15:26:21 **** Processed 150000 nets.
+**** 15:26:21 **** Processed 155000 nets.
+**** 15:26:21 **** Processed 160000 nets.
+**** 15:26:21 **** Processed 165000 nets.
+**** 15:26:22 **** Processed 170000 nets.
+**** 15:26:22 **** Processed 175000 nets.
+
+Begin Summary 
+  Found no problems or warnings.
+End Summary
+
+End Time: Sat Mar 21 15:26:22 2026
+Time Elapsed: 0:00:07.0
+
+******** End: VERIFY CONNECTIVITY ********
+  Verification Complete : 0 Viols.  0 Wrngs.
+  (CPU Time: 0:00:06.5  MEM: 0.000M)
+

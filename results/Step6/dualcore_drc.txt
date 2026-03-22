@@ -1,0 +1,110 @@
+ *** Starting Verify DRC (MEM: 2623.5) ***
+
+  VERIFY DRC ...... Starting Verification
+  VERIFY DRC ...... Initializing
+  VERIFY DRC ...... Deleting Existing Violations
+  VERIFY DRC ...... Creating Sub-Areas
+  VERIFY DRC ...... Using new threading
+  VERIFY DRC ...... Sub-Area : 1 of 49
+  VERIFY DRC ...... Sub-Area : 1 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 2 of 49
+  VERIFY DRC ...... Sub-Area : 2 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 3 of 49
+  VERIFY DRC ...... Sub-Area : 3 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 4 of 49
+  VERIFY DRC ...... Sub-Area : 4 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 5 of 49
+  VERIFY DRC ...... Sub-Area : 5 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 6 of 49
+  VERIFY DRC ...... Sub-Area : 6 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 7 of 49
+  VERIFY DRC ...... Sub-Area : 7 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 8 of 49
+  VERIFY DRC ...... Sub-Area : 8 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 9 of 49
+  VERIFY DRC ...... Sub-Area : 9 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 10 of 49
+  VERIFY DRC ...... Sub-Area : 10 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 11 of 49
+  VERIFY DRC ...... Sub-Area : 11 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 12 of 49
+  VERIFY DRC ...... Sub-Area : 12 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 13 of 49
+  VERIFY DRC ...... Sub-Area : 13 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 14 of 49
+  VERIFY DRC ...... Sub-Area : 14 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 15 of 49
+  VERIFY DRC ...... Sub-Area : 15 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 16 of 49
+  VERIFY DRC ...... Sub-Area : 16 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 17 of 49
+  VERIFY DRC ...... Sub-Area : 17 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 18 of 49
+  VERIFY DRC ...... Sub-Area : 18 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 19 of 49
+  VERIFY DRC ...... Sub-Area : 19 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 20 of 49
+  VERIFY DRC ...... Sub-Area : 20 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 21 of 49
+  VERIFY DRC ...... Sub-Area : 21 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 22 of 49
+  VERIFY DRC ...... Sub-Area : 22 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 23 of 49
+  VERIFY DRC ...... Sub-Area : 23 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 24 of 49
+  VERIFY DRC ...... Sub-Area : 24 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 25 of 49
+  VERIFY DRC ...... Sub-Area : 25 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 26 of 49
+  VERIFY DRC ...... Sub-Area : 26 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 27 of 49
+  VERIFY DRC ...... Sub-Area : 27 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 28 of 49
+  VERIFY DRC ...... Sub-Area : 28 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 29 of 49
+  VERIFY DRC ...... Sub-Area : 29 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 30 of 49
+  VERIFY DRC ...... Sub-Area : 30 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 31 of 49
+  VERIFY DRC ...... Sub-Area : 31 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 32 of 49
+  VERIFY DRC ...... Sub-Area : 32 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 33 of 49
+  VERIFY DRC ...... Sub-Area : 33 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 34 of 49
+  VERIFY DRC ...... Sub-Area : 34 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 35 of 49
+  VERIFY DRC ...... Sub-Area : 35 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 36 of 49
+  VERIFY DRC ...... Sub-Area : 36 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 37 of 49
+  VERIFY DRC ...... Sub-Area : 37 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 38 of 49
+  VERIFY DRC ...... Sub-Area : 38 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 39 of 49
+  VERIFY DRC ...... Sub-Area : 39 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 40 of 49
+  VERIFY DRC ...... Sub-Area : 40 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 41 of 49
+  VERIFY DRC ...... Sub-Area : 41 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 42 of 49
+  VERIFY DRC ...... Sub-Area : 42 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 43 of 49
+  VERIFY DRC ...... Sub-Area : 43 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 44 of 49
+  VERIFY DRC ...... Sub-Area : 44 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 45 of 49
+  VERIFY DRC ...... Sub-Area : 45 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 46 of 49
+  VERIFY DRC ...... Sub-Area : 46 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 47 of 49
+  VERIFY DRC ...... Sub-Area : 47 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 48 of 49
+  VERIFY DRC ...... Sub-Area : 48 complete 0 Viols.
+  VERIFY DRC ...... Sub-Area : 49 of 49
+  VERIFY DRC ...... Sub-Area : 49 complete 0 Viols.
+
+  Verification Complete : 0 Viols.
+
+ *** End Verify DRC (CPU: 0:00:42.7  ELAPSED TIME: 43.00  MEM: 141.6M) ***
+
