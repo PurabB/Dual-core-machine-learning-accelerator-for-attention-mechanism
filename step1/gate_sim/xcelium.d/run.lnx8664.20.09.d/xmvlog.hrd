@@ -1,0 +1,14 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-VFILE
+../syn/verilog/fifo_mux_2_1.v
+-VFILE
+../syn/verilog/fifo_mux_8_1.v
+-VFILE
+../syn/verilog/fifo_mux_16_1.v
+-VFILE
+./netlist/fullchip.pnr.v
+-VFILE
+./netlist/tcbn65gplus.v
