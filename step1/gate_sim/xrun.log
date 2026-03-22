@@ -1,0 +1,1409 @@
+xrun(64): 20.09-s017: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s017: Started on Mar 18, 2026 at 03:00:05 PDT
+xrun
+	+gui
+	+access+rwc
+	+xm64bit
+	+xmstatus
+	+xmtimescale+1ns/1ps
+	+xmoveride_timescale
+	-v ../syn/verilog/fifo_mux_2_1.v
+	-v ../syn/verilog/fifo_mux_8_1.v
+	-v ../syn/verilog/fifo_mux_16_1.v
+	-v ./netlist/fullchip.pnr.v
+	-v ./netlist/tcbn65gplus.v
+	./netlist/fullchip_tb.v
+
+   User defined plus("+") options:
+	+xmoveride_timescale
+
+Recompiling... reason: file './netlist/fullchip_tb.v' is newer than expected.
+	expected: Wed Mar 18 01:23:19 2026
+	actual:   Wed Mar 18 03:00:03 2026
+file: ./netlist/fullchip_tb.v
+	module worklib.fullchip_tb:v
+		errors: 0, warnings: 0
+file: ../syn/verilog/fifo_mux_8_1.v
+xmvlog: *W,LIBNOU: Library "../syn/verilog/fifo_mux_16_1.v" given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+xmvlog: Memory Usage - Current physical: 25.2M, Current virtual: 96.9M
+xmvlog: CPU Usage - 0.0s system + 1.4s user = 1.5s total (1.5s, 97.5% cpu)
+		Caching library 'fullchip' ....... Done
+		Caching library 'fifo_mux_2_1' ....... Done
+		Caching library 'fifo_mux_8_1' ....... Done
+		Caching library 'worklib' ....... Done
+		Caching library 'tcbn65gplus' ....... Done
+	Elaborating the design hierarchy:
+   DFD1 cnt_q_reg_0_ (.CP(clk_clone4),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,10238|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): Q
+
+   DFD1 cnt_q_reg_0_ (.CP(clk_clone8),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,31489|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): Q
+
+   DFD1 cnt_q_reg_3_ (.CP(clk_clone8),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,31574|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   FA1D1 U530 (.A(n1521),
+            |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,52482|12): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,9795): CO
+
+   DFD1 cnt_q_reg_0_ (.CP(clk_clone5),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,55221|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): Q
+
+   DFD1 cnt_q_reg_0_ (.CP(clk_clone6),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,67541|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): Q
+
+   DFD2 cnt_q_reg_0_ (.CP(clk_clone5),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,77979|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5860): Q
+
+   DFD1 cnt_q_reg_0_ (.CP(clk_clone7),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,89337|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): Q
+
+   DFD2 cnt_q_reg_2_ (.CP(clk_clone7),
+                   |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,89428|19): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5860): Q
+
+   ofifo_col8_bw20 ofifo_inst (.in({ array_out[159],
+                            |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,153170|28): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,107323): o_valid
+xmelab: (./netlist/fullchip.pnr.v,107325): o_full
+
+   fifo_depth16_bw20_simd1_7 col_idx_0__fifo_instance (.in({ in[19],
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107480|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,92390): o_full
+xmelab: (./netlist/fullchip.pnr.v,92391): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(CTS_19),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,94043|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   fifo_depth16_bw20_simd1_6 col_idx_1__fifo_instance (.in({ in[39],
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107525|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,105552): o_full
+xmelab: (./netlist/fullchip.pnr.v,105553): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(rd_clk_clone2),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107091|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   fifo_depth16_bw20_simd1_5 col_idx_2__fifo_instance (.in({ in[59],
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107572|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,103721): o_full
+xmelab: (./netlist/fullchip.pnr.v,103722): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(rd_clk_clone2),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,105262|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   fifo_depth16_bw20_simd1_4 col_idx_3__fifo_instance (.rd_clk(clk_clone22),
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107619|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,101826): o_full
+xmelab: (./netlist/fullchip.pnr.v,101827): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(rd_clk),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,103434|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   fifo_depth16_bw20_simd1_3 col_idx_4__fifo_instance (.in({ in[99],
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107667|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,99951): o_full
+xmelab: (./netlist/fullchip.pnr.v,99952): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(rd_clk_clone4),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,101519|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   fifo_depth16_bw20_simd1_2 col_idx_5__fifo_instance (.in({ in[119],
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107719|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,98117): o_full
+xmelab: (./netlist/fullchip.pnr.v,98118): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(CTS_4),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,99640|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   fifo_depth16_bw20_simd1_1 col_idx_6__fifo_instance (.in({ in[139],
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107772|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,96212): o_full
+xmelab: (./netlist/fullchip.pnr.v,96213): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(rd_clk),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,97811|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+   fifo_depth16_bw20_simd1_0 col_idx_7__fifo_instance (.in({ in[159],
+                                                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,107817|52): 2 output ports were not connected:
+xmelab: (./netlist/fullchip.pnr.v,94349): o_full
+xmelab: (./netlist/fullchip.pnr.v,94350): o_empty
+
+   DFD1 wr_ptr_reg_3_ (.CP(rd_clk),
+                    |
+xmelab: *W,CUVWSP (./netlist/fullchip.pnr.v,95906|20): 1 output port was not connected:
+xmelab: (./netlist/tcbn65gplus.v,5821): QN
+
+	Top level design units:
+		fullchip_tb
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92355|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92356|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92357|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92358|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92359|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92360|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92361|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92362|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92366|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92367|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92368|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92369|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92370|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92371|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92372|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92373|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92374|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92378|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92379|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92380|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,92382|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_0__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105517|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105518|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105519|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105520|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105521|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105522|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105523|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105524|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105528|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105529|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105530|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105531|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105532|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105533|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105534|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105535|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105536|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105540|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105541|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105542|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,105544|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_1__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103686|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103687|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103688|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103689|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103690|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103691|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103692|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103693|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103697|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103698|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103699|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103700|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103701|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103702|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103703|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103704|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103705|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103709|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103710|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103711|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,103713|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_2__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101790|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101791|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101792|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101793|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101794|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101795|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101796|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101797|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101801|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101802|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101803|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101804|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101805|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101806|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101807|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101808|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101809|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101813|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101814|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101815|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,101817|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_3__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99916|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99917|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99918|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99919|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99920|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99921|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99922|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99923|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99927|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99928|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99929|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99930|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99931|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99932|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99933|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99934|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99935|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99939|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99940|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99941|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,99943|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_4__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98082|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98083|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98084|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98085|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98086|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98087|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98088|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98089|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98093|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98094|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98095|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98096|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98097|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98098|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98099|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98100|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98101|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98105|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98106|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98107|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,98109|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_5__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96177|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96178|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96179|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96180|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96181|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96182|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96183|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96184|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96188|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96189|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96190|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96191|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96192|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96193|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96194|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96195|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96196|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96200|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96201|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96202|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,96204|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_6__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1a (.in0(in0),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94314|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in1(in1),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94315|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in2(in2),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94316|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in3(in3),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94317|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in4(in4),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94318|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in5(in5),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94319|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in6(in6),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94320|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in7(in7),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94321|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub0));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94325|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_8_1 mux_8_1b (.in0(in8),
+                                 |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94326|33): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in1(in9),
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94327|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in2(in10),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94328|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in3(in11),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94329|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in4(in12),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94330|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in5(in13),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94331|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in6(in14),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94332|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in7(in15),
+	        |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94333|9): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.out(out_sub1));
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94337|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+   fifo_mux_2_1 mux_2_1a (.in0(out_sub0),
+                                      |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94338|38): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.in1(out_sub1),
+	            |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94339|13): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	.out(out));
+	       |
+xmelab: *W,CUVMPW (./netlist/fullchip.pnr.v,94341|8): port sizes differ in port connection(20/32) for the instance(fullchip_tb.fullchip_instance.core_instance.ofifo_inst.col_idx_7__fifo_instance.fifo_mux_16_1a) .
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.fullchip_tb:v <0x19b2d798>
+			streams:  28, words: 45484
+		fullchip.fifo_mux_16_1_bw20_simd1_0:v <0x4558130b>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_0:v <0x716c81f7>
+			streams:   0, words:     0
+		fullchip.fifo_mux_16_1_bw20_simd1_1:v <0x198830e6>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_1:v <0x6ea509f2>
+			streams:   0, words:     0
+		fullchip.fifo_mux_16_1_bw20_simd1_2:v <0x7cf854d1>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_2:v <0x3545a089>
+			streams:   0, words:     0
+		fullchip.fifo_mux_16_1_bw20_simd1_3:v <0x2028773c>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_3:v <0x0e0c920a>
+			streams:   0, words:     0
+		fullchip.fifo_mux_16_1_bw20_simd1_4:v <0x5c8f2a6c>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_4:v <0x7c0c0483>
+			streams:   0, words:     0
+		fullchip.fifo_mux_16_1_bw20_simd1_5:v <0x005f0981>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_5:v <0x345eb827>
+			streams:   0, words:     0
+		fullchip.fifo_mux_16_1_bw20_simd1_6:v <0x652f6db6>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_6:v <0x28eaa55e>
+			streams:   0, words:     0
+		fullchip.fifo_mux_16_1_bw20_simd1_7:v <0x39ff4e5b>
+			streams:   0, words:     0
+		fullchip.fifo_depth16_bw20_simd1_7:v <0x0fd97bb0>
+			streams:   0, words:     0
+		fullchip.ofifo_col8_bw20:v <0x7cfb0715>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_0:v <0x1ef9a90c>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id8:v <0x4369eec6>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_1:v <0x21f4d745>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id7:v <0x47cfdac5>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_2:v <0x1e68b46d>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id6:v <0x2a2b70ff>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_3:v <0x39d91b1f>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id5:v <0x3e26dffc>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_4:v <0x50cac026>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id4:v <0x3a7d366a>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_5:v <0x7c0f1f3d>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id3:v <0x29c3bf35>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_6:v <0x25cb8029>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id2:v <0x77ff6e7c>
+			streams:   0, words:     0
+		fullchip.mac_8in_bw8_bw_psum20_pr8_7:v <0x263a4245>
+			streams:   0, words:     0
+		fullchip.mac_col_bw8_bw_psum20_pr8_col_id1:v <0x3395a64c>
+			streams:   0, words:     0
+		fullchip.mac_array_col8_bw8_bw_psum20_pr8:v <0x1304af22>
+			streams:   0, words:     0
+		fullchip.core_col8_bw8_bw_psum20_pr8:v <0x1c95df44>
+			streams:   0, words:     0
+		fullchip.fullchip:v <0x62b9c45f>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2D4:v <0x294a62a0>
+			streams:   0, words:     0
+		tcbn65gplus.CKMUX2D1:v <0x37838521>
+			streams:   0, words:     0
+		tcbn65gplus.CKMUX2D2:v <0x29131fd7>
+			streams:   0, words:     0
+		tcbn65gplus.EDFQD2:v <0x530add05>
+			streams:   0, words:     0
+		tcbn65gplus.EDFQD4:v <0x60d32db0>
+			streams:   0, words:     0
+		tcbn65gplus.EDFQD1:v <0x675ea67f>
+			streams:   0, words:     0
+		tcbn65gplus.EDFQD4:v <0x07be739c>
+			streams:   0, words:     0
+		tcbn65gplus.EDFQD1:v <0x0033f853>
+			streams:   0, words:     0
+		tcbn65gplus.DFD4:v <0x301304fd>
+			streams:   0, words:     0
+		tcbn65gplus.DFKCNQD1:v <0x7d46d0ca>
+			streams:   0, words:     0
+		tcbn65gplus.MUX4ND1:v <0x71a99ae7>
+			streams:   0, words:     0
+		tcbn65gplus.XOR3D0:v <0x4f6c26f8>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2D0:v <0x48ec7697>
+			streams:   0, words:     0
+		tcbn65gplus.XOR3D4:v <0x4bd76c99>
+			streams:   0, words:     0
+		tcbn65gplus.DFD2:v <0x1bf66f75>
+			streams:   0, words:     0
+		tcbn65gplus.DFKCNQD4:v <0x5c30dd46>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D1:v <0x2f2c9321>
+			streams:   0, words:     0
+		tcbn65gplus.CKXOR2D2:v <0x0a078e37>
+			streams:   0, words:     0
+		tcbn65gplus.XOR2D0:v <0x343407ea>
+			streams:   0, words:     0
+		tcbn65gplus.CKMUX2D0:v <0x6b781dcd>
+			streams:   0, words:     0
+		tcbn65gplus.DFKCNQD2:v <0x1392b461>
+			streams:   0, words:     0
+		tcbn65gplus.DFKCNQD2:v <0x08c2c3e7>
+			streams:   0, words:     0
+		tcbn65gplus.HA1D4:v <0x2d39f143>
+			streams:   0, words:     0
+		tcbn65gplus.CKXOR2D4:v <0x02ef3db9>
+			streams:   0, words:     0
+		tcbn65gplus.CKXOR2D2:v <0x1157f9b1>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2D4:v <0x4e273c8c>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2D0:v <0x2f8128bb>
+			streams:   0, words:     0
+		tcbn65gplus.CKMUX2D1:v <0x50eedb0d>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2D1:v <0x3d6adf94>
+			streams:   0, words:     0
+		tcbn65gplus.DFQD2:v <0x33dafabb>
+			streams:   0, words:     0
+		tcbn65gplus.DFD1:v <0x1d14f822>
+			streams:   0, words:     0
+		tcbn65gplus.DFQD1:v <0x73430d59>
+			streams:   0, words:     0
+		tcbn65gplus.DFQD4:v <0x5124745b>
+			streams:   0, words:     0
+		tcbn65gplus.DFKCNQD1:v <0x6616a74c>
+			streams:   0, words:     0
+		tcbn65gplus.DFKCNQD4:v <0x4760aac0>
+			streams:   0, words:     0
+		tcbn65gplus.FA1D0:v <0x4111e99a>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D2:v <0x562f64b9>
+			streams:   0, words:     0
+		tcbn65gplus.XOR2D2:v <0x725d7fd9>
+			streams:   0, words:     0
+		tcbn65gplus.CKXOR2D4:v <0x19bf4a3f>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D4:v <0x5cb59d2b>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D2:v <0x4d7f133f>
+			streams:   0, words:     0
+		tcbn65gplus.HA1D1:v <0x22c15b11>
+			streams:   0, words:     0
+		tcbn65gplus.HA1D0:v <0x21f3d3ab>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D0:v <0x10461c8a>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D0:v <0x0b166b0c>
+			streams:   0, words:     0
+		tcbn65gplus.HA1D2:v <0x2796c2df>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D4:v <0x47e5eaad>
+			streams:   0, words:     0
+		tcbn65gplus.FA1D2:v <0x3183ed1f>
+			streams:   0, words:     0
+		tcbn65gplus.FA1D4:v <0x7b44e6d1>
+			streams:   0, words:     0
+		tcbn65gplus.XOR3D1:v <0x4c5ae756>
+			streams:   0, words:     0
+		tcbn65gplus.FA1D1:v <0x54e068f8>
+			streams:   0, words:     0
+		tcbn65gplus.XOR2D4:v <0x6397f1cd>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2ND0:v <0x059508c6>
+			streams:   0, words:     0
+		tcbn65gplus.XNR2D1:v <0x347ce4a7>
+			streams:   0, words:     0
+		tcbn65gplus.CKXOR2D1:v <0x7c3648ad>
+			streams:   0, words:     0
+		tcbn65gplus.XOR3D2:v <0x780e9c2c>
+			streams:   0, words:     0
+		tcbn65gplus.XNR3D4:v <0x40653b8f>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2D2:v <0x64614f3e>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2ND1:v <0x637ab686>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2ND4:v <0x5eb58f9e>
+			streams:   0, words:     0
+		tcbn65gplus.MUX2ND2:v <0x70f61323>
+			streams:   0, words:     0
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                   Instances  Unique
+		Modules:               33828     264
+		UDPs:                  22984       3
+		Primitives:            85306       9
+		Timing outputs:        35465     223
+		Registers:              8658      47
+		Scalar wires:          45950       -
+		Expanded wires:           72       3
+		Initial blocks:           14      14
+		Cont. assignments:        11      21
+		Pseudo assignments:        3       3
+		Timing checks:         78208       -
+		Simulation timescale:    1ps
+	Writing initial simulation snapshot: worklib.fullchip_tb:v
+xmelab: Memory Usage - Final: 70.7M, Peak: 82.6M, Peak virtual: 204.7M
+xmelab: CPU Usage - 0.2s system + 4.6s user = 4.8s total (5.0s, 97.1% cpu)
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /software/ECE/XCELIUM-2009/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm fullchip_tb.K fullchip_tb.Q fullchip_tb.captured_data fullchip_tb.clk fullchip_tb.execute fullchip_tb.i fullchip_tb.inst fullchip_tb.j fullchip_tb.k fullchip_tb.kmem_rd fullchip_tb.kmem_wr fullchip_tb.load fullchip_tb.m fullchip_tb.mem_in fullchip_tb.ofifo_rd fullchip_tb.out fullchip_tb.p fullchip_tb.pmem_add fullchip_tb.pmem_rd fullchip_tb.pmem_wr fullchip_tb.q fullchip_tb.qk_file fullchip_tb.qk_scan_file fullchip_tb.qkmem_add fullchip_tb.qmem_rd fullchip_tb.qmem_wr fullchip_tb.reset fullchip_tb.result fullchip_tb.s fullchip_tb.sum fullchip_tb.t fullchip_tb.temp5b fullchip_tb.temp16b fullchip_tb.temp_sum fullchip_tb.u fullchip_tb.weight
+Created probe 1
+xcelium> run
+##### Q data txt reading #####
+Open failed on file "qdata.txt". No such file or directory
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,98|31): $fscanf --  Null file descriptor.
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,99|31): $fscanf --  Null file descriptor.
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,100|31): $fscanf --  Null file descriptor.
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,101|31): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,106|39): $fscanf --  Null file descriptor.
+##### K data txt reading #####
+Open failed on file "kdata.txt". No such file or directory
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,137|31): $fscanf --  Null file descriptor.
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,138|31): $fscanf --  Null file descriptor.
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,139|31): $fscanf --  Null file descriptor.
+  qk_scan_file = $fscanf(qk_file, "%s\n", captured_data);
+                               |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,140|31): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+          qk_scan_file = $fscanf(qk_file, "%d\n", captured_data);
+                                       |
+xmsim: *E,SYSFMT (./netlist/fullchip_tb.v,147|39): $fscanf --  Null file descriptor.
+##### Estimated multiplication result #####
+prd @cycle 0: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+prd @cycle 1: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+prd @cycle 2: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+prd @cycle 3: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+prd @cycle 4: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+prd @cycle 5: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+prd @cycle 6: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+prd @cycle 7: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+##### Qmem writing  #####
+##### Kmem writing #####
+##### K data loading to processor #####
+##### execute #####
+##### move ofifo to pmem #####
+##### Read PMEM and Verify #####
+SUCCESS at cycle           0, col           0: Got xxxxx
+SUCCESS at cycle           0, col           1: Got xxxxx
+SUCCESS at cycle           0, col           2: Got xxxxx
+SUCCESS at cycle           0, col           3: Got xxxxx
+SUCCESS at cycle           0, col           4: Got xxxxx
+SUCCESS at cycle           0, col           5: Got xxxxx
+SUCCESS at cycle           0, col           6: Got xxxxx
+SUCCESS at cycle           0, col           7: Got xxxxx
+SUCCESS at cycle           1, col           0: Got xxxxx
+SUCCESS at cycle           1, col           1: Got xxxxx
+SUCCESS at cycle           1, col           2: Got xxxxx
+SUCCESS at cycle           1, col           3: Got xxxxx
+SUCCESS at cycle           1, col           4: Got xxxxx
+SUCCESS at cycle           1, col           5: Got xxxxx
+SUCCESS at cycle           1, col           6: Got xxxxx
+SUCCESS at cycle           1, col           7: Got xxxxx
+SUCCESS at cycle           2, col           0: Got xxxxx
+SUCCESS at cycle           2, col           1: Got xxxxx
+SUCCESS at cycle           2, col           2: Got xxxxx
+SUCCESS at cycle           2, col           3: Got xxxxx
+SUCCESS at cycle           2, col           4: Got xxxxx
+SUCCESS at cycle           2, col           5: Got xxxxx
+SUCCESS at cycle           2, col           6: Got xxxxx
+SUCCESS at cycle           2, col           7: Got xxxxx
+SUCCESS at cycle           3, col           0: Got xxxxx
+SUCCESS at cycle           3, col           1: Got xxxxx
+SUCCESS at cycle           3, col           2: Got xxxxx
+SUCCESS at cycle           3, col           3: Got xxxxx
+SUCCESS at cycle           3, col           4: Got xxxxx
+SUCCESS at cycle           3, col           5: Got xxxxx
+SUCCESS at cycle           3, col           6: Got xxxxx
+SUCCESS at cycle           3, col           7: Got xxxxx
+SUCCESS at cycle           4, col           0: Got xxxxx
+SUCCESS at cycle           4, col           1: Got xxxxx
+SUCCESS at cycle           4, col           2: Got xxxxx
+SUCCESS at cycle           4, col           3: Got xxxxx
+SUCCESS at cycle           4, col           4: Got xxxxx
+SUCCESS at cycle           4, col           5: Got xxxxx
+SUCCESS at cycle           4, col           6: Got xxxxx
+SUCCESS at cycle           4, col           7: Got xxxxx
+SUCCESS at cycle           5, col           0: Got xxxxx
+SUCCESS at cycle           5, col           1: Got xxxxx
+SUCCESS at cycle           5, col           2: Got xxxxx
+SUCCESS at cycle           5, col           3: Got xxxxx
+SUCCESS at cycle           5, col           4: Got xxxxx
+SUCCESS at cycle           5, col           5: Got xxxxx
+SUCCESS at cycle           5, col           6: Got xxxxx
+SUCCESS at cycle           5, col           7: Got xxxxx
+SUCCESS at cycle           6, col           0: Got xxxxx
+SUCCESS at cycle           6, col           1: Got xxxxx
+SUCCESS at cycle           6, col           2: Got xxxxx
+SUCCESS at cycle           6, col           3: Got xxxxx
+SUCCESS at cycle           6, col           4: Got xxxxx
+SUCCESS at cycle           6, col           5: Got xxxxx
+SUCCESS at cycle           6, col           6: Got xxxxx
+SUCCESS at cycle           6, col           7: Got xxxxx
+SUCCESS at cycle           7, col           0: Got xxxxx
+SUCCESS at cycle           7, col           1: Got xxxxx
+SUCCESS at cycle           7, col           2: Got xxxxx
+SUCCESS at cycle           7, col           3: Got xxxxx
+SUCCESS at cycle           7, col           4: Got xxxxx
+SUCCESS at cycle           7, col           5: Got xxxxx
+SUCCESS at cycle           7, col           6: Got xxxxx
+SUCCESS at cycle           7, col           7: Got xxxxx
+Simulation Finished
+Simulation complete via $finish(1) at time 108 NS + 0
+./netlist/fullchip_tb.v:373   $finish;
+xcelium> ^C
+xcelium> exit
+xmsim: Memory Usage - Final: 128.3M, Peak: 142.2M, Peak virtual: 543.3M
+xmsim: Main Thread CPU Usage - 14.0s system + 8.4s user = 22.5s total
+xmsim: CPU Usage - 14.0s system + 8.1s user = 22.1s total (679.9s, 3.3% cpu)
+TOOL:	xrun(64)	20.09-s017: Exiting on Mar 18, 2026 at 03:11:32 PDT  (total: 00:11:27)

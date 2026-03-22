@@ -1,0 +1,28 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+./xcelium.d/run.lnx8664.20.09.d
+-RUNMODE
+-STATUS
+-VFILE
+../syn/verilog/fifo_mux_2_1.v
+-VFILE
+../syn/verilog/fifo_mux_8_1.v
+-VFILE
+../syn/verilog/fifo_mux_16_1.v
+-VFILE
+./netlist/fullchip.pnr.v
+-VFILE
+./netlist/tcbn65gplus.v
+./netlist/fullchip_tb.v
+-CDSLIB
+./xcelium.d/run.lnx8664.20.09.d/cdsrun.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.20.09.d/hdlrun.var
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+./xcelium.d/run.lnx8664.20.09.d/xllibs
+-ALLOWUNBOUND
